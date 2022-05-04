@@ -1,2 +1,2 @@
 # code_typing
-2022 capstone 코딩 타자연습 웹 사이트 'codes'
+2022 Capstone Design - coding typing practice Development 'Codes'
