@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="ko">
+    {% include 'head.html' %}
+
+
+    <body>
+        {% include 'header.html' %}
+
+        <!--페이지 이동에 따라 block content 사용-->
+        {% block content %}
+        {% endblock %}
+
+        {% include 'footer.html' %}
+    </body>
+
+
+</html>
