@@ -25,4 +25,6 @@ urlpatterns = [
     path('practice/', include('practiceapp.urls')),
     path('upractice/', include('upracticeapp.urls')),
     path('board/', include('boardapp.urls')),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    path('post/', include('postapp.urls')),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
