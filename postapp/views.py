@@ -29,3 +29,14 @@ class PostDetailView(DetailView):
     model = Post
     context_object_name = 'target_post'
     template_name = 'postapp/detail.html'
+
+
+
+class PostUpdateView(UpdateView):
+    model = Post
+    form_class = PostCreationForm
+    template_name = 'postapp/create.html'
+
+
+    def get_success_url(self):
+        return reverse('postapp:detail', kwargs={'pk':self.object.pk})
