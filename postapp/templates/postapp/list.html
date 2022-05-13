@@ -2,16 +2,56 @@
 
 {% block content %}
 
-<div style="text-align: right">
-<!--    {% if target_post %}-->
-<!--    {% for title in target_post.post_title %}-->
-<!--        {{ title }}-->
-<!--    {% endfor %}-->
-<!--    {% endif %}-->
+<div style="margin-top: 5rem">
+    {% if post_list %}
+    <div style="text-align: center">
+    {% for list in post_list %}
+        <a href="{% url 'postapp:detail' pk=list.pk %}">
+            <p>
+                {{ list.post_title }}
+            </p>
+        </a>
+    {% endfor %}
+    </div>
+    {% else %}
+    <div>
+        <h4>게시글이 없습니다.</h4>
+    </div>
+    {% endif %}
 
-    <a href="{% url 'postapp:create' %}" class="btn btn-dark rounded-pill col-3 mt-3 mb-3">
+    {% include 'snippets/pagination.html' with page_obj=page_obj %}
+
+    <div style="text-align: right">
+    <a href="{% url 'postapp:create' %}" class="btn text-white rounded-pill col-2 px-3" style="background-color: #504DD2;">
         Create Post
     </a>
+    </div>
+
+<!--    <div style="margin-right: 2rem;margin-left: 2rem; text-align: center;padding:0%">-->
+<!--        <hr>-->
+<!--        <p>-->
+<!--        <div style="display:inline-block; width: 10%;height: auto">번호</div>-->
+<!--        <div style="display:inline-block; width: 50%;">제목</div>-->
+<!--        <div style="display:inline-block; width: 10%;">글쓴이</div>-->
+<!--        <div style="display:inline-block; width: 10%;">작성일</div>-->
+<!--        <div style="display:inline-block; width: 8%;">조회수</div>-->
+<!--        <div style="display:inline-block; width: 8%;">추천수</div>-->
+<!--        </p>-->
+<!--        <hr>-->
+<!--    </div>-->
+<!--    <div style="margin-right: 2rem;margin-left: 2rem; text-align: center;padding:0%">-->
+<!--    <p>-->
+<!--        <div style="display:inline-block; width: 10%;height: auto">번호</div>-->
+<!--        <div style="display:inline-block; width: 50%;">제목</div>-->
+<!--        <div style="display:inline-block; width: 10%;">글쓴이</div>-->
+<!--        <div style="display:inline-block; width: 10%;">작성일</div>-->
+<!--        <div style="display:inline-block; width: 8%;">조회수</div>-->
+<!--        <div style="display:inline-block; width: 8%;">추천수</div>-->
+<!--        </p>-->
+<!--        <hr>-->
+<!--    </div>-->
+
+
 </div>
 
 
