@@ -131,6 +131,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_DIRS = [
+    BASE_DIR / 'static'
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -144,3 +147,12 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
 
 MEDIA_URL = 'media/'
 MEDIA_DIRS = [os.path.join(BASE_DIR, 'media'),]
+
+# #이메일로 로그인 기능 구현 = 안됨...
+# #로그인 인증 방법
+# ACCOUNT_ATHENTICATION_METHOD = 'email'
+# #이메일 주소 입력 필수 여부
+# ACCOUNT_EMAIL_REQUIRED = True
+# #username 입력 필수 여부
+# ACCOUNT_USERNAME_REQUIRED = False
+
