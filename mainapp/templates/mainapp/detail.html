@@ -6,7 +6,10 @@
                     <div style="padding:1rem;border: 1px solid #504DD2; float: left; width: 20%;height: 300%;border-radius: 2rem;margin-right: 4%">
 
 
-                        <p style="text-align: center; margin-top: 30%">내정보</p>
+                        <p style="text-align: center; margin-top: 30%; font-weight: bold">내정보
+                        <img src="{{ target_user.profile.m_emoticon.url }}" alt=""
+                             style="height: 12rem; width: 12rem; border-radius: 20rem; margin-top: 20%;
+                             border: 2px solid black;"></p>
                     </div>
                 </div>
      </div>
@@ -14,8 +17,6 @@
       <div style="text-align: center; max-width: 300px; margin: 4rem auto;">
 
       {% if target_user.profile %}
-        <img src="{{ target_user.profile.m_emoticon.url }}" alt=""
-             style="height: 12rem; width: 12rem; border-radius: 20rem; margin-bottom: 2rem; border: 3px solid black;">
         <h2>
             {{ target_user.profile.user_nick }}
             {% if target_user == user %}
