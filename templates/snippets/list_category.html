@@ -1,13 +1,33 @@
 
-<div style="margin-top: 5rem">
+<div>
     {% if post_list %}
-    <div style="text-align: center">
+    <div style="text-align: center;margin-left: 2rem;margin-right: 2rem">
     {% for list in post_list %}
-        <a href="{% url 'postapp:detail' pk=list.pk %}">
-            <p>
-                {{ list.post_title | truncatechars:15 }}
-            </p>
-        </a>
+        <div style="border-bottom: 1px solid #504DD2;text-align: center;padding:0%">
+        <div style="display:inline-block; width: 5%;">
+            {{ list.post_id }}
+        </div>
+        <div style="display:inline-block; width: 45%;">
+            <a href="{% url 'postapp:detail' pk=list.pk %}">
+                <div style="margin:0rem;padding: 0rem">
+                    {{ list.post_title | truncatechars:15 }}
+                </div>
+            </a>
+
+        </div>
+        <div style="display:inline-block; width: 10%;">
+            {{ list.writer }}
+        </div>
+        <div style="display:inline-block; width: 20%;">
+            {{ list.post_wdate }}
+        </div>
+        <div style="display:inline-block; width: 8%;">
+            {{ list.post_viewnum }}
+        </div>
+        <div style="display:inline-block; width: 8%;">
+            {{ list.like_num }}
+        </div>
+    </div>
     {% endfor %}
     </div>
     {% else %}
@@ -16,13 +36,13 @@
     </div>
     {% endif %}
 
-    {% include 'snippets/pagination.html' with page_obj=page_obj %}
+<!--    {% include 'snippets/pagination.html' with page_obj=page_obj %}-->
 
-    <div style="text-align: right">
-    <a href="{% url 'postapp:create' %}" class="btn text-white rounded-pill col-2 px-3" style="background-color: #504DD2;">
-        Create Post
-    </a>
-    </div>
+<!--    <div style="text-align: right">-->
+<!--    <a href="{% url 'postapp:create' %}" class="btn text-white rounded-pill col-2 px-3" style="background-color: #504DD2;">-->
+<!--        Create Post-->
+<!--    </a>-->
+<!--    </div>-->
 
 
 
