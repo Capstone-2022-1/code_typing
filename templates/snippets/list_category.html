@@ -8,7 +8,7 @@
             {{ list.post_id }}
         </div>
         <div style="display:inline-block; width: 45%;">
-            <a href="{% url 'postapp:detail' pk=list.pk %}">
+            <a href="{% url 'postapp:detail' pk=list.pk %}" style="text-decoration: none; color: black">
                 <div style="margin:0rem;padding: 0rem">
                     {{ list.post_title | truncatechars:15 }}
                 </div>
