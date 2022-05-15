@@ -2,14 +2,14 @@
 
 {% block content %}
 
-<div style="margin-top: 5rem">
-    {% if post_list %}
-    <div style="text-align: center">
-    {% for list in post_list %}
-        <a href="{% url 'postapp:detail' pk=list.pk %}">
-            <p>
-                {{ list.post_title | truncatechars:15 }}
-            </p>
+<div style="margin-top: 5rem; margin-left: 2rem">
+    {% if category_list %}
+    <div style="text-align: left;margin-left: auto; margin-right: auto;">
+    {% for list in category_list %}
+        <a href="{% url 'boardapp:detail' pk=list.pk %}" style="text-decoration: none;">
+                <div style="display: inline-block">
+                    {{ list.post_category }} |
+                </div>
         </a>
     {% endfor %}
     </div>
@@ -22,8 +22,8 @@
     {% include 'snippets/pagination.html' with page_obj=page_obj %}
 
     <div style="text-align: right">
-    <a href="{% url 'postapp:create' %}" class="btn text-white rounded-pill col-2 px-3" style="background-color: #504DD2;">
-        Create Post
+    <a href="{% url 'boardapp:create' %}" class="btn text-white rounded-pill col-2 px-3" style="background-color: #504DD2;">
+        Create Category
     </a>
     </div>
 
@@ -57,5 +57,3 @@
 
 
 {% endblock %}
-
-

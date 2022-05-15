@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+    <div style="text-align: center;">
+        <h2>
+            {{ target_category.post_category }}
+        </h2>
+    </div>
+
+    <div>
+        {% include 'snippets/list_category.html' with post_list=object_list %}
+    </div>
+</div>
+
+
+{% endblock %}

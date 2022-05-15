@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+{% block content %}
+    <div style="text-align: center;">
+        <div class="mb-4">
+            <h4>Create Category</h4>
+        </div>
+        <form action="{% url 'boardapp:create' %}" method="post">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            <input type="submit" class="btn btn-darkrounded-pill col-6 mt-3">
+        </form>
+    </div>
+{% endblock %}

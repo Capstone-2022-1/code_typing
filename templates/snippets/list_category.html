@@ -1,0 +1,31 @@
+
+<div style="margin-top: 5rem">
+    {% if post_list %}
+    <div style="text-align: center">
+    {% for list in post_list %}
+        <a href="{% url 'postapp:detail' pk=list.pk %}">
+            <p>
+                {{ list.post_title | truncatechars:15 }}
+            </p>
+        </a>
+    {% endfor %}
+    </div>
+    {% else %}
+    <div>
+        <h4>게시글이 없습니다.</h4>
+    </div>
+    {% endif %}
+
+    {% include 'snippets/pagination.html' with page_obj=page_obj %}
+
+    <div style="text-align: right">
+    <a href="{% url 'postapp:create' %}" class="btn text-white rounded-pill col-2 px-3" style="background-color: #504DD2;">
+        Create Post
+    </a>
+    </div>
+
+
+
+</div>
+
+
