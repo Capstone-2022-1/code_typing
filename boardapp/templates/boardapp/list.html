@@ -14,18 +14,17 @@
     {% endfor %}
     </div>
     {% else %}
-    <div>
-        <h4>게시글이 없습니다.</h4>
-    </div>
+
+
     {% endif %}
 
     {% include 'snippets/pagination.html' with page_obj=page_obj %}
 
-    <div style="text-align: right">
-    <a href="{% url 'boardapp:create' %}" class="btn text-white rounded-pill col-2 px-3" style="background-color: #504DD2;">
-        Create Category
-    </a>
-    </div>
+<!--    <div style="text-align: right">-->
+<!--    <a href="{% url 'boardapp:create' %}" class="btn text-white rounded-pill col-2 px-3" style="background-color: #504DD2;">-->
+<!--        Create Category-->
+<!--    </a>-->
+<!--    </div>-->
 
 <!--    <div style="margin-right: 2rem;margin-left: 2rem; text-align: center;padding:0%">-->
 <!--        <hr>-->

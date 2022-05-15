@@ -7,19 +7,6 @@
         <div class="mb-4">
             <h4>Post Create</h4>
         </div>
-<!--        <form action="" method="post">-->
-<!--            {% csrf_token%}-->
-<!--            <div>-->
-<!--                <p style="font-family: 'Nanum Gothic Coding', monospace; font-size: 1.1rem;-->
-<!--                font-weight: 200; display: inline-block; margin-top: 0rem; margin-bottom: 0rem;">게시판 선택</p>-->
-<!--                <select id="post_category" name='post_category' style="margin-left: 0.5rem; display: inline-block; width: 8rem; height: 1.9rem; font-family: 'Nanum Gothic Coding', monospace; font-weight: 200;">-->
-<!--                    <option value='free'>자유게시판</option>-->
-<!--                    <option value='question'>질문게시판</option>-->
-<!--                    <option value='notice'>공지사항</option>-->
-<!--                </select>-->
-<!--                <input type="hidden" type="submit" value="category_select" style="margin-left: 0.2rem; font-family: 'Nanum Gothic Coding', monospace; font-weight: 200; font-size: 0.9rem">-->
-<!--            </div>-->
-<!--        </form>-->
     <form action="{% url 'postapp:create' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {% bootstrap_form form %}
