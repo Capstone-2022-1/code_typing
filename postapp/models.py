@@ -5,7 +5,7 @@ from django.db import models
 
 class Post(models.Model):
     post_id = models.AutoField(primary_key=True)
-    post_category = models.CharField(max_length=32,null=True)
+
     post_title = models.CharField(max_length=256,null=False)
     image = models.ImageField(upload_to='post/', null=False)
     post_content = models.TextField(null=False)
