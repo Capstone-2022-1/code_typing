@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div>
+<div style="height: 32rem">
 
     <div style="margin:3rem 2rem 1rem 2rem;text-align: left;">
         <p>
@@ -9,7 +9,8 @@
         </p>
     </div>
 
-    <div style="border-top: 1.2px solid #504DD2;border-bottom: 1.2px solid #504DD2;margin-right: 2rem;margin-left: 2rem; text-align: center;padding:0%">
+    <div style="border-top: 1.5px solid #504DD2;border-bottom: 1.5px solid #504DD2;
+    margin-right: 2rem;margin-left: 2rem; text-align: center; padding-top: .5rem; padding-bottom: .5rem">
         <div style="display:inline-block; width: 5%;height: auto">번호</div>
         <div style="display:inline-block; width: 45%;">제목</div>
         <div style="display:inline-block; width: 10%;">글쓴이</div>
@@ -21,14 +22,15 @@
     {% include 'snippets/list_category.html' with post_list=object_list %}
 
 
-    {% include 'snippets/pagination.html' with page_obj=page_obj %}
+</div>
 
-    <div style="text-align: right">
-    <a href="{% url 'postapp:create' %}" class="btn text-white rounded-pill col-2 px-3" style="background-color: #504DD2;">
-        Create Post
+<div style="margin-top:3rem; margin-right:2rem; text-align: right">
+    <a href="{% url 'postapp:create' %}" class="btn text-white rounded-pill col-1 px-3" style="background-color: #504DD2;font-size: small">
+        글쓰기
     </a>
     </div>
-</div>
+
+    {% include 'snippets/pagination.html' with page_obj=page_obj %}
 
 
 {% endblock %}

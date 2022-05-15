@@ -60,4 +60,4 @@ class PostListView(ListView):
     model = Post
     context_object_name = 'post_list'
     template_name = 'postapp/list.html'
-    paginate_by = 5
+    paginate_by = 10

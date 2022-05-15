@@ -24,7 +24,7 @@ class CategoryDetailView(DetailView, MultipleObjectMixin):
     context_object_name = 'target_category'
     template_name = 'boardapp/detail.html'
 
-    paginate_by = 25
+    paginate_by = 13
 
     def get_context_data(self, **kwargs):
         object_list = Post.objects.filter(category=self.get_object())
@@ -35,4 +35,5 @@ class CategoryListView(ListView):
     model = PostCategory
     context_object_name = 'category_list'
     template_name = 'boardapp/list.html'
-    paginate_by = 5
+    paginate_by = 10
+
