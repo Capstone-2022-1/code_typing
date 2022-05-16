@@ -17,8 +17,8 @@
 <!--        </div>-->
 <!--</div>-->
 
-<div style="margin-left:2rem; margin-right:2rem;height: auto; width: 95%;">
-    <div style="display:inline-block;height:auto;width: 20%; text-align: center; padding: 2rem">
+<div style="margin-left:2rem; margin-right:2rem;width: 95%;">
+    <div style="display:inline-block;vertical-align: top; width: 20%; text-align: center; padding: 2rem">
         <a href="{% url 'boardapp:list' %}" style="text-decoration: none; color: black">커뮤니티</a>
         <hr style="color: #504DD2">
         <div style="margin-bottom: 1rem"><a href="#" style="text-decoration: none; color: black">공지사항</a></div>
@@ -61,6 +61,8 @@
 
 
         <div style="height: auto;width: 100%; padding-bottom: 3rem;">
+
+
 
         {% include 'commentapp/create.html' with post=target_post %}
 
