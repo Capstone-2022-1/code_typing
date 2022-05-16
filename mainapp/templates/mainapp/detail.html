@@ -2,7 +2,7 @@
 
 {% block content %}
     <div style="padding:1rem; border: 1px solid #504DD2; float: left; width: 20%; height:290%;
-                        border-radius: 2rem; margin: 2% 4% 0 7%">
+                        border-radius: 2rem; margin: 2% 4% 0 7%;">
         <p style="text-align: center; margin-top: 20%; font-weight: bold;">내정보<br>
             {% if target_user.profile %} <!-- 프로필 존재할 때 이미지-->
                 <img src="{{ target_user.profile.m_emoticon.url }}" alt=""
@@ -57,28 +57,28 @@
         </div>
     </div>
     <div style="height: 33rem; width: 60rem; border-radius: 1rem; margin-top: 5%; margin-left: 30%;">
-            <p style="font-size: large; font-weight: bold">
+        <p style="font-size: large; font-weight: bold">
             연습 기록
-            </p>
+        </p>
         <div style="margin-top: 5%;">
             <div style="font-size: large">
-             코드 선택 &nbsp;
-            <select name="language" style="font-size: medium">
-                <option value="python" selected="selected">python</option>
-                <option value="html">html</option>
-                <option value="javascript">javascript</option>
-                <option value="css">css</option>
-            </select>
+                코드 선택 &nbsp;
+                <select name="language" style="font-size: medium">
+                    <option value="python" selected="selected">python</option>
+                    <option value="html">html</option>
+                    <option value="javascript">javascript</option>
+                    <option value="css">css</option>
+                </select>
             </div>
             <div style="border-top: 1.5px solid #504DD2;border-bottom: 1.5px solid #504DD2; margin-top: 20px;
                     margin-right: 2rem; text-align: center; padding-top: .5rem; padding-bottom: .5rem">
                 <div style="display:inline-block; width: 5%;height: auto">번호</div>
                 <div style="display:inline-block; width: 35%;">일시</div>
                 <div style="display:inline-block; width: 18%;">속도</div>
-        <div style="display:inline-block; width: 18%;">정확도</div>
-        <div style="display:inline-block; width: 18%;">소요시간</div>
+                <div style="display:inline-block; width: 18%;">정확도</div>
+                <div style="display:inline-block; width: 18%;">소요시간</div>
             </div>
-{#            {% include 'snippets/list_category.html' with post_list=object_list %}#}
+            {#            {% include 'snippets/list_category.html' with post_list=object_list %}#}
         </div>
 
     </div>
