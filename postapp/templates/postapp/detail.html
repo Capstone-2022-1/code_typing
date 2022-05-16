@@ -58,8 +58,15 @@
                 {{ target_post.post_content }}
             </p>
         </div>
+
+
         <div style="height: auto;width: 100%; padding-bottom: 3rem;">
+
         {% include 'commentapp/create.html' with post=target_post %}
+
+        {% for comment in target_post.comment.all %}
+            {% include 'commentapp/detail.html' with comment=comment %}
+        {% endfor %}
         </div>
     </div>
 </div>
