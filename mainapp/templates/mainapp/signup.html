@@ -3,6 +3,22 @@
 
 {% block content %}
 
+<style>
+.w-btn {
+    position: relative;
+    border: none;
+    display: inline-block;
+    padding: 10px 30px;
+    border-radius: 15px;
+    text-decoration: none;
+    transition: 0.25s;
+}
+.w-btn-yellow {
+    background-color: #CCCBF2;
+    color: black;
+}
+</style>
+
     <div style="text-align: center; max-width: 500px; margin: 4rem auto">
     <div style="margin-bottom: 7%">
             <h4>회원가입</h4>
@@ -10,8 +26,7 @@
     <form action="{% url 'mainapp:signup' %}" method="post">
         {% csrf_token %}
         {% bootstrap_form form %}
-        <input type="submit" class="btn btn-dark rounded-pill col-6 mt-4">
-
+        <input type="submit" class="w-btn w-btn-yellow col-10 mt-4" value="회원가입">
     </form>
     </div>
 
