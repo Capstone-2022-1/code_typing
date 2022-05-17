@@ -5,14 +5,35 @@
 
 
     <div style="text-align: center; max-width: 500px; margin: 4rem auto">
-        <div>
-            <h4>Login</h4>
+        <div style="margin-bottom: 7%">
+            <h4>로그인</h4>
         </div>
         <div>
             <form action="" method="post">
                 {% csrf_token %}
                 {% bootstrap_form form %}
+                <div style="text-align: right">이메일 찾기 | 비밀번호 찾기</div>
                 <input type="submit" class="btn btn-dark rounded-pill col-6 mt-4">
+
+                <div style="text-align: center; margin-left: auto; margin-right: auto; margin-top: 12%">
+                    <div>
+                        <div style="display: inline-block;">아직</div>
+                        <div style="display: inline-block; color: #504DD2; font-family: 'Cabin', sans-serif; font-size: 1.5rem;">
+                            code<span style="color:#14128F">s</span></div>
+                        <div style="display: inline-block" class="korean">회원이 아니신가요?</div>
+                        <div style="display: inline-block; width: 150px; border: 1px solid; border-radius: 2rem; font-family: 'Cabin', sans-serif">
+                            <a style="text-decoration:none; color: black"
+                               href="{% url 'mainapp:signup' %}">
+                                <span style="color:#504DD2">code</span><span style="color:#14128F">s&nbsp;</span>회원가입
+                            </a>
+                        </div>
+                        </h1>
+
+                    </div>
+
+
+                </div>
+
             </form>
         </div>
     </div>

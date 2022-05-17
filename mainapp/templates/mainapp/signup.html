@@ -4,6 +4,9 @@
 {% block content %}
 
     <div style="text-align: center; max-width: 500px; margin: 4rem auto">
+    <div style="margin-bottom: 7%">
+            <h4>회원가입</h4>
+        </div>
     <form action="{% url 'mainapp:signup' %}" method="post">
         {% csrf_token %}
         {% bootstrap_form form %}
