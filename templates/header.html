@@ -1,54 +1,74 @@
 {% load static %}
 <style>
-    .korean{
-        font-family: 'Nanum Gothic Coding', monospace;
+    .nav-bar {
+        height: 80px;
     }
 
+    .logo {
+        margin: 10px 50px;
+        height: 60px;
+    }
 
+    .menu {
+        float: right;
+        list-style: none;
+        margin: 20px;
+    }
+
+    .menu li {
+        display: inline-block;
+        margin: 20px 10px;
+    }
+
+    .menu li a {
+        text-decoration: none;
+        color: #504DD2;
+        letter-spacing: 2px;
+    }
+
+    .menu2 a {
+        text-decoration: none;
+        color: #504DD2;
+        letter-spacing: 2px;
+    }
+
+    .menu li a:hover {
+        background-color: #504DD2;
+        transition: .4s;
+        color: #ffffff;
+        border-radius: 5px;
+    }
+
+    .menu2 a:hover {
+        background-color: #504DD2;
+        transition: .4s;
+        color: #ffffff;
+        border-radius: 5px;
+    }
 </style>
 <header>
-    <div style="height: 2rem; background-color: white; border-radius: 1rem; margin: 2rem; margin-top: 1rem;">
-        <div style="display: inline-block; width: 13%">
-            <div style="display: inline-block; color: #504DD2; font-family: 'Cabin', sans-serif; font-size: 2rem;">
-                <a style="text-decoration: none;" href="{% url 'mainapp:mainpage' %}">
+    <div class="nav-bar">
+        <div style="display: inline-block; color: #504DD2; font-family: 'Cabin', sans-serif; font-size: 50px;
+margin-left: 50px; margin-top: 20px;">
+            <a style="text-decoration: none; color: #504DD2;" href="{% url 'mainapp:mainpage' %}">
                 code<span style="color:#14128F">s</span>
-                </a>
-            </div>
+            </a>
         </div>
-        <div style="display: inline-block; width: 65%; text-align: center"class="korean">
-            <div style="display: inline-block; margin-right: 3rem;">
-                <a style="text-decoration: none; color: black" href="{% url 'mainapp:mainpage' %}">홈</a>
-            </div>
-            <span style="display: inline-block; margin-right: 3rem;">
-                <a style="text-decoration: none; color: black" href="{% url 'practiceapp:firstpractice' %}">타자연습</a>
-            </span>
-            <div style="display: inline-block; margin-right: 3rem;">
-                <a style="text-decoration: none; color: black" href="{% url 'upracticeapp:ufirstpractice' %}">나의코드</a>
-            </div>
-            <div style="display: inline-block; margin-right: 3rem;">
-                <a style="text-decoration: none; color: black" href="{% url 'boardapp:list' %}">커뮤니티</a>
-            </div>
-        </div>
+        <ul class="menu">
+            <li><a href="{% url 'mainapp:mainpage' %}">홈</a>
+            <li><a href="{% url 'practiceapp:firstpractice' %}">타자연습</a>
+            <li><a href="{% url 'upracticeapp:ufirstpractice' %}">나의코드</a>
+            <li><a href="{% url 'boardapp:list' %}">커뮤니티</a>
 
-        <div style="display: inline-block; width: 16%; text-align: right"class="korean">
-            {% if not user.is_authenticated %}
-                <a style="text-decoration: none; color: black" href="{% url 'mainapp:login' %}?next={{ request.path }}">
-            <div style="display: inline-block">로그인</div>
-                </a>
-            <strong style="display: inline-block; font-size: 0.8rem; font-family: 'Cabin', sans-serif;">  │  </strong>
-                <a style="text-decoration: none; color: black" href="{% url 'mainapp:signup' %}">
-            <div style="display: inline-block">회원가입</div>
-                </a>
-            {% else %}
-            <a style="text-decoration: none; color: black" href="{% url 'mainapp:detail' pk=user.pk %}">
-                <div style="display: inline-block">마이페이지</div>
-            </a>
-            <strong style="display: inline-block; font-size: 0.8rem; font-family: 'Cabin', sans-serif;">  │  </strong>
-            <a style="text-decoration: none; color: black" href="{% url 'mainapp:logout' %}?next={{ request.path }}">
-            <div style="display: inline-block">로그아웃</div>
-            </a>
-            {% endif %}
-        </div>
+                <span style="color:#ffffff;">######</span>
+                {% if not user.is_authenticated %}
+                    <li><a href="{% url 'mainapp:login' %}?next={{ request.path }}">로그인 </a></li>
+                    <span> | </span>
+                    <li><a href="{% url 'mainapp:signup' %}">회원가입</a></li>
+                {% else %}
+                    <li><a href="{% url 'mainapp:detail' pk=user.pk %}">마이페이지</a></li>
+                    <li><a href="{% url 'mainapp:logout' %}?next={{ request.path }}">로그아웃</a></li>
+                {% endif %}
+        </ul>
     </div>
-
 </header>

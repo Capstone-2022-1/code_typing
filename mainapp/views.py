@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.http import HttpResponse
@@ -5,6 +6,7 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.urls import reverse_lazy
+from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
 
 from mainapp.forms import AccountUpdateForm
@@ -12,6 +14,8 @@ from mainapp.forms import AccountUpdateForm
 
 def main_page(request):
     return render(request, 'mainapp/mainpage.html')
+
+
 
 class AccountCreateView(CreateView):
     model = User
@@ -24,6 +28,7 @@ class AccountDetailView(DetailView):
     context_object_name = 'target_user'
     template_name = 'mainapp/detail.html'
 
+
 class AccountUpdateView(UpdateView):
     model = User
     context_object_name = 'target_user'
@@ -31,8 +36,11 @@ class AccountUpdateView(UpdateView):
     success_url = reverse_lazy('mainapp:mainpage')
     template_name = 'mainapp/update.html'
 
+
 class AccountDeleteView(DeleteView):
     model = User
     context_object_name = 'target_user'
     success_url = reverse_lazy('mainapp:login')
     template_name = 'mainapp/delete.html'
+
+

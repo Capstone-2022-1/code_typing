@@ -108,6 +108,7 @@ upracticeapp/__pycache__/
 .idea
 .idea/
 
+
 post/
 
 db.sqlite3

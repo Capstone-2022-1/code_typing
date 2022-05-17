@@ -1,0 +1,13 @@
+.w-btn {
+    position: relative;
+    border: none;
+    display: inline-block;
+    padding: 10px 30px;
+    border-radius: 15px;
+    text-decoration: none;
+    transition: 0.25s;
+}
+.w-btn-yellow {
+    background-color: #CCCBF2;
+    color: black;
+}
