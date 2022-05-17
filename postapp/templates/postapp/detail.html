@@ -18,7 +18,7 @@
 <!--</div>-->
 
 <div style="margin-left:2rem; margin-right:2rem;width: 95%;">
-    <div style="display:inline-block;vertical-align: top; width: 20%; text-align: center; padding: 2rem">
+    <div style="background-color: gray; display:inline-block; vertical-align: top; width: 20%; text-align: center; padding: 2rem">
         <a href="{% url 'boardapp:list' %}" style="text-decoration: none; color: black">커뮤니티</a>
         <hr style="color: #504DD2">
         <div style="margin-bottom: 1rem"><a href="#" style="text-decoration: none; color: black">공지사항</a></div>
@@ -26,15 +26,15 @@
         <div><a href="#" style="text-decoration: none; color: black">질문게시판</a></div>
     </div>
 
-    <div style="display:inline-block;height: auto; width: 75%; border:1px solid #504DD2; padding:.5rem;">
+    <div style="display:inline-block; height: auto; width: 75%; border:1px solid #504DD2; padding:.5rem;">
         <div style="height: auto;width: 100%; border-bottom: 1px solid #504DD2">
             <div>
                 <h4>{{ target_post.post_title }}</h4>
             </div>
             <div>
                 <div style="display: inline-block; width: 49%">
-                    <p>{{ target_post.writer }}</p>
-                    <p>{{ target_post.post_wdate }}</p>
+                    <p>작성자: {{ target_post.writer }}</p>
+                    <p>작성일시: {{ target_post.post_wdate }}</p>
                 </div>
                 <div style="display: inline-block; width: 50%; text-align: end">
                     <div style="display: inline-block">
