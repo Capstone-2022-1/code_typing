@@ -10,3 +10,4 @@ class Profile(models.Model):
 
     m_emoticon = models.ImageField(upload_to='profile/', null=True)
     user_nick = models.CharField(max_length=20, unique=True, null=True)
+
