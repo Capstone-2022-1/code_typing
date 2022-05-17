@@ -11,6 +11,13 @@
     <div style="margin: 1rem 0;">
         {{ comment.comment_content }}
     </div>
+    {% if comment.writer == user %}
+    <div style="text-align: right;">
+        <a href="{% url 'commentapp:delete' pk=comment.pk %}" class="btn btn-danger rounded-pill">
+            댓글삭제
+        </a>
+    </div>
+    {% endif %}
 
 
 </div>

@@ -1,24 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<!--<div  style="height: auto; border-radius: 1rem; margin-left: auto; margin-right: auto;">-->
-<!--        <div style="text-align: center; margin-left: auto; margin-right: auto;">-->
-
-<!--            <h1>-->
-<!--                {{ target_post.post_title }}-->
-<!--            </h1>-->
-<!--    &lt;!&ndash;          <p>&ndash;&gt;-->
-<!--    &lt;!&ndash;              {{ target_post.post_category }}&ndash;&gt;-->
-<!--    &lt;!&ndash;          </p>&ndash;&gt;-->
 
 
-
-
-<!--        </div>-->
-<!--</div>-->
-
-<div style="margin-left:2rem; margin-right:2rem;width: 95%;">
-    <div style="background-color: gray; display:inline-block; vertical-align: top; width: 20%; text-align: center; padding: 2rem">
+<div style="display:inline-block;margin-left:2rem; margin-right:2rem;width: 95%;">
+    <div style="display:inline-block; vertical-align: top; width: 20%; text-align: center; padding: 2rem">
         <a href="{% url 'boardapp:list' %}" style="text-decoration: none; color: black">커뮤니티</a>
         <hr style="color: #504DD2">
         <div style="margin-bottom: 1rem"><a href="#" style="text-decoration: none; color: black">공지사항</a></div>
@@ -62,13 +48,12 @@
 
         <div style="height: auto;width: 100%; padding-bottom: 3rem;">
 
-
-
         {% include 'commentapp/create.html' with post=target_post %}
-
-        {% for comment in target_post.comment.all %}
-            {% include 'commentapp/detail.html' with comment=comment %}
-        {% endfor %}
+            <div style="height: auto;width: 100%; padding: .5rem 3rem .5rem 3rem;">
+            {% for comment in target_post.comment.all %}
+                {% include 'commentapp/detail.html' with comment=comment %}
+            {% endfor %}
+            </div>
         </div>
     </div>
 </div>
