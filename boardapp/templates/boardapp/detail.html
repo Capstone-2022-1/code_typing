@@ -4,9 +4,12 @@
 <div style="height: 32rem">
 
     <div style="margin:3rem 2rem 1rem 2rem;text-align: left;">
-
         <p>
-            {{ target_category.post_category }}
+            <a href="{% url 'boardapp:detail' pk=9 %}" style="text-decoration: none; color: black">공지사항</a>
+            |
+            <a href="{% url 'boardapp:detail' pk=10 %}" style="text-decoration: none; color: black">자유게시판</a>
+            |
+            <a href="{% url 'boardapp:detail' pk=11 %}" style="text-decoration: none; color: black">질문게시판</a>
         </p>
     </div>
 

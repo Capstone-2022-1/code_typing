@@ -58,7 +58,7 @@ margin-left: 50px; margin-top: 20px;">
             <li><a href="{% url 'mainapp:mainpage' %}">홈</a>
             <li><a href="{% url 'practiceapp:firstpractice' %}">타자연습</a>
             <li><a href="{% url 'upracticeapp:ufirstpractice' %}">나의코드</a>
-            <li><a href="{% url 'boardapp:list' %}">커뮤니티</a>
+            <li><a href="{% url 'boardapp:detail' pk=9 %}">커뮤니티</a>
 
                 <span style="color:#ffffff;">######</span>
                 {% if not user.is_authenticated %}
