@@ -38,8 +38,12 @@
                 </div>
             </div>
         </div>
-        <div style="height: auto;width: 100%; border-bottom: 1px solid #504DD2; padding-bottom: 3rem;">
-            <img src="{{ target_post.image.url }}" width="10%" height="10%" alt="" style="object-fit: cover;">
+        <div style="height: auto; width: 100%; border-bottom: 1px solid #504DD2; padding-bottom: 3rem;">
+            <div style="height: 16rem; width: 100%; display: flex; justify-content : center; margin-top: 1rem;margin-bottom: 1rem">
+                <div style="width: auto; height: 100%; margin: auto">
+                    <img src="{{ target_post.image.url }}" width="auto" height="100%" alt="" style="object-fit: cover;">
+                </div>
+            </div>
             <p>
                 {{ target_post.post_content }}
             </p>
