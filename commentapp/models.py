@@ -13,3 +13,8 @@ class Comment(models.Model):
     like_num = models.IntegerField(default=0)
     post = models.ForeignKey(Post, on_delete=models.CASCADE, null=False, related_name='comment')
     writer = models.ForeignKey(User, on_delete=models.CASCADE, null=False, related_name='comment')
+
+    def __str__(self):
+        return str(self.comment_id) + ' - ' + str(self.post) + ' - ' + str(self.comment_content) + ' - ' + str(self.writer)
+
+
