@@ -24,7 +24,7 @@
             {% bootstrap_form form %}
 
             {% if user.is_authenticated %}
-            <input type="submit" class="w-btn w-btn-ccc col-4 mt-4" value="확인">
+            <input type="submit" class="w-btn w-btn-ccc col-4 mt-4" value="확인" style="color: black; background-color: #CCCBF2">
             {% else %}
             <a href="{% url 'mainapp:login' %}?next={{ request.path }}"
                class="w-btn w-btn-ccc col-4 mt-4">
