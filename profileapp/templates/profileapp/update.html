@@ -2,6 +2,23 @@
 {% load bootstrap4 %}
 
 {% block content %}
+<style>
+.w-btn {
+    position: relative;
+    border: none;
+    display: inline-block;
+    padding: 10px 30px;
+    border-radius: 15px;
+    font-family: "paybooc-Light", sans-serif;
+    text-decoration: none;
+    transition: 0.25s;
+}
+.w-btn-ccc {
+    background-color: #CCCBF2;
+    color: black;
+}
+</style>
+
     <div style="display: inline-block; width: 1200px; background-color: white; text-align: center; margin-left: 10rem">  <!-- 전체 div로 묶기 -->
         <div style="display: inline-block; width: 27%; border: 1px solid #504DD2; border-radius: 2rem;
                     height: 600px; background-color: white; vertical-align: top;"><!-- 왼쪽 프로필 div 영역 -->
@@ -31,7 +48,8 @@
     <form action="{% url 'profileapp:update' pk=target_profile.pk %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {% bootstrap_form form %}
-        <input type="submit" class="btn btn-dark rounded-pill col-6 mt-4">
+        <input type="submit" class="w-btn w-btn-ccc col-4 mt-4" value="취소">
+        <input type="submit" class="w-btn w-btn-ccc col-4 mt-4" value="수정">
     </form>
     </div>
     </div>

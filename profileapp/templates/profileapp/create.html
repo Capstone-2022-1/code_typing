@@ -2,6 +2,23 @@
 {% load bootstrap4 %}
 
 {% block content %}
+<style>
+.w-btn {
+    position: relative;
+    border: none;
+    display: inline-block;
+    padding: 10px 30px;
+    border-radius: 15px;
+    font-family: "paybooc-Light", sans-serif;
+    text-decoration: none;
+    transition: 0.25s;
+}
+.w-btn-ccc {
+    background-color: #CCCBF2;
+    color: black;
+}
+</style>
+
 
     <div style="text-align: center; max-width: 500px; margin: 4rem auto">
       <div>
@@ -10,7 +27,7 @@
     <form action="{% url 'profileapp:create' %}" method="post" enctype='multipart/form-data'>
         {% csrf_token %}
         {% bootstrap_form form %}
-        <input type="submit" class="btn btn-dark rounded-pill col-6 mt-4">
+        <input type="submit" class="w-btn w-btn-ccc col-4 mt-4" value="프로필 생성">
     </form>
     </div>
 
