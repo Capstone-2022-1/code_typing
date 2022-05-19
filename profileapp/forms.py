@@ -9,3 +9,7 @@ class ProfileCreationForm(ModelForm):
     class Meta:
         model = Profile
         fields = ['m_emoticon', 'user_nick']
+        labels = {
+            'm_emoticon': '프로필 사진',
+            'user_nick': '닉네임'
+        }
