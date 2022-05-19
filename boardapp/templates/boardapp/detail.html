@@ -1,6 +1,23 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<style>
+.w-btn {
+    position: relative;
+    border: none;
+    display: inline-block;
+    padding: 5px 30px;
+    border-radius: 15px;
+    font-family: "paybooc-Light", sans-serif;
+    text-decoration: none;
+    transition: 0.25s;
+    }
+    .w-btn-ccc {
+    background-color: #CCCBF2;
+    color: black;
+    }
+</style>
+
 <div style="height: 32rem">
 
     <div style="margin:3rem 2rem 1rem 2rem;text-align: left;">
@@ -29,7 +46,7 @@
 </div>
 
 <div style="margin-top:3rem; margin-right:2rem; text-align: right">
-    <a href="{% url 'postapp:create' %}" class="btn text-white rounded-pill col-1 px-3" style="background-color: #504DD2;font-size: small">
+    <a href="{% url 'postapp:create' %}" class="w-btn w-btn-ccc col-1.5 mt-4">
         글쓰기
     </a>
     </div>
