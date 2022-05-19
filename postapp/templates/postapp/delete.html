@@ -4,14 +4,17 @@
 {% block content %}
 
     <div style="text-align: center; max-width: 500px; margin: 4rem auto">
-      <div class="mb-4">
-          <h4>{{ target_post.post_title }}</h4>
-          <p>게시글을 삭제하시겠습니까?</p>
-      </div>
-    <form action="{% url 'postapp:delete' pk=target_post.pk %}" method="post">
-        {% csrf_token %}
-        <input type="submit" class="btn btn-danger rounded-pill col-6 mt-4" value="삭제하기">
-    </form>
+        <div class="mb-4">
+            <h4>{{ target_post.post_title }}</h4>
+            <p>게시글을 삭제하시겠습니까?</p>
+        </div>
+        <form action="{% url 'postapp:delete' pk=target_post.pk %}" method="post">
+            {% csrf_token %}
+            <input type="submit" class="btn btn-danger rounded-pill col-6 mt-4" value="삭제">
+        </form>
+        <a href="{% url 'postapp:detail' pk=target_post.pk %}">
+            <div class="btn btn-danger rounded-pill col-6 mt-4">취소</div>
+        </a>
     </div>
 
 {% endblock %}

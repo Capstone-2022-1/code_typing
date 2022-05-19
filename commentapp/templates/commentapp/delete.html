@@ -8,10 +8,16 @@
           <h4>{{ target_comment.comment_content }}</h4>
           <p>댓글을 삭제하시겠습니까?</p>
       </div>
-    <form action="{% url 'commentapp:delete' pk=target_comment.pk %}" method="post">
-        {% csrf_token %}
-        <input type="submit" class="btn btn-danger rounded-pill col-6 mt-4" value="삭제하기">
-    </form>
+        <form action="{% url 'commentapp:delete' pk=target_comment.pk %}" method="post">
+            {% csrf_token %}
+            <input type="submit" class="btn btn-danger rounded-pill col-6 mt-4" value="삭제">
+        </form>
+
+        <form action="{% url 'postapp:detail' pk=target_comment.post.pk %}" method="get">
+            {% csrf_token %}
+            <input type="submit" class="btn btn-danger rounded-pill col-6 mt-4" value="취소">
+        </form>
+
     </div>
 
 {% endblock %}

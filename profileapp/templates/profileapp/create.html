@@ -19,16 +19,25 @@
 }
 </style>
 
-
-    <div style="text-align: center; max-width: 500px; margin: 4rem auto">
+<div style="text-align: center;">
+    <div style="margin-left: 2%; display: inline-block; text-align: center; width: 830px; background-color: white;
+            border: 1px solid #504DD2; border-radius: 2rem; height: 600px;">
+    <div style="text-align: center; max-width: 300px; margin: 1.5rem auto; margin-top: 20%;" >
       <div>
-          <h4>Profile Create</h4>
+          <h4>프로필 생성</h4>
       </div>
+
+    </div>
+
+    <div style="text-align: center; max-width: 400px; margin: 3rem auto;">
     <form action="{% url 'profileapp:create' %}" method="post" enctype='multipart/form-data'>
         {% csrf_token %}
         {% bootstrap_form form %}
-        <input type="submit" class="w-btn w-btn-ccc col-4 mt-4" value="프로필 생성">
+        <input type="submit" class="w-btn w-btn-ccc col-5 mt-4" value="생성">
     </form>
     </div>
+    </div>
+    </div>
+
 
 {% endblock %}

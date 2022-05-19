@@ -18,15 +18,15 @@
 
 </style>
 <header>
-    <div style="height: 5rem; border-radius: 1rem; margin: 2rem; margin-top: 1rem; width: 1450px;">
-        <div style="display: inline-block; width: 13%">
+    <div style="height: 5rem; border-radius: 1rem; margin-left: 2rem; margin-top: 1rem; width: 96%;">
+        <div style="display: inline-block; width: 20%; margin-right: 13%">
             <div style="display: inline-block; color: #504DD2; font-family: 'Cabin', sans-serif; font-size: 50px;">
                 <a style="text-decoration: none; color: #504DD2" href="{% url 'mainapp:mainpage' %}">
                 code<span style="color:#14128F">s</span>
                 </a>
             </div>
         </div>
-        <div style="display: inline-block; width: 65%; text-align: center; margin-left: 5rem"class="korean">
+        <div style="display: inline-block; width: 40%; text-align: center; margin-right: 5%;" class="korean">
             <div style="display: inline-block; margin-right: 4rem;">
                 <a class="div2" style="text-decoration: none;" href="{% url 'mainapp:mainpage' %}">홈</a>
             </div>
@@ -37,11 +37,11 @@
                 <a  class="div2"  style="text-decoration: none;" href="{% url 'upracticeapp:ufirstpractice' %}">나의코드</a>
             </div>
             <div style="display: inline-block; margin-right: 4rem;">
-                <a  class="div2"  style="text-decoration: none;" href="{% url 'boardapp:list' %}">커뮤니티</a>
+                <a  class="div2"  style="text-decoration: none;" href="{% url 'boardapp:detail' pk=9 %}">커뮤니티</a>
             </div>
         </div>
 
-        <div style="display: inline-block; width: 15%; text-align: right; margin-left: 0.1rem"class="korean">
+        <div style="display: inline-block; width: 20%; text-align: right; margin-left: 0.1rem;" class="korean">
             {% if not user.is_authenticated %}
                 <a class="div2" style="text-decoration: none; " href="{% url 'mainapp:login' %}?next={{ request.path }}">
             <div style="display: inline-block;">로그인</div>

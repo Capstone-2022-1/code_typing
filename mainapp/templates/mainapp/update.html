@@ -52,7 +52,7 @@
                 <form action="{% url 'mainapp:update' pk=target_user.pk %}" method="post">
                     {% csrf_token %}
                     {% bootstrap_form form %}
-                    <input type="submit" class="w-btn w-btn-ccc col-3 mt-4" value="취소">
+                    <a href="{% url 'mainapp:detail' pk=target_user.pk %}" class="w-btn w-btn-ccc col-3 mt-4" type="submit">취소</a>
                     <input type="submit" class="w-btn w-btn-ccc col-3 mt-4" value="수정">
                 </form>
             </div>
