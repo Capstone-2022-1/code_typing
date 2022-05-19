@@ -1,0 +1,204 @@
+
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Codes 타자게임</title>
+    <style>
+        #info{float:left; margin-left: 50px; font-size : 30px;}
+        #contents{background-color: rgb(190, 191, 230); width: 1200px; height: 700px; margin: 0 auto;}
+        #tajaContents{width:100%; height: 95%; position: relative}
+        #inputContents{text-align: center; border-top-style: solid; border-top-color: black; padding-top: 5px;}
+        #inputText{display:inline-block}
+        #inputBtn{display:inline-block;}
+    </style>
+</head>
+<body>
+    <div id="info">
+        <div id="score"></div>
+        <div id="life"></div>
+    </div>
+    <div id="contents">
+
+        <div id="tajaContents"></div>
+        <div id="inputContents" style="margin-bottom: 1000px">
+            <div id="inputText">
+                <input type="text" id="tajaText" />
+            </div>
+            <div id="inputBtn">
+                <button id="tajaBtn">시작하기</button>
+            </div>
+        </div>
+    </div>
+    <script src="tajaGame.js"></script>
+</body>
+<script type="text/javascript">
+
+var taja = ["print", "for", "while", "elif", "else", "if", "self", "get", "return", "try",
+    "except", "def", "super", "sum", "add", "max", "type", "str", "int", "float", "True", "False"
+];
+
+
+var tajaContents = document.getElementById("tajaContents");
+
+
+var newObj = [];
+
+
+var plusTop = new Array(taja.length);
+for (let i = 0; i < plusTop.length; i++) {
+    plusTop[i] = 0;
+}
+
+
+const TAJAWIDTH = 150;
+const TAJAHEIGHT = 30;
+
+
+const DRAWTIME = 1000;
+const DOWNTIME = 500;
+
+
+var life = 5;
+var lifeDiv = document.getElementById("life");
+lifeDiv.innerHTML = "LIFE : " + life;
+
+
+var score = 0;
+var scoreDiv = document.getElementById("score");
+scoreDiv.innerHTML = "SCORE : " + score;
+
+
+var idx = 0;
+
+
+function drawTaja() {
+    var randomPick = 0;
+    var temp = null;
+
+
+    for (let i = 0; i < taja.length; i++) {
+        randomPick = Math.round(Math.random() * (taja.length - 1));
+        temp = taja[randomPick];
+        taja[randomPick] = taja[i];
+        taja[i] = temp;
+    }
+
+
+    var drawInterval = setInterval(function () {
+
+        var leftWidth = Math.round(Math.random() * 1200);
+        var tajaDiv = document.createElement("div");
+        tajaDiv.classList.add("tajaWord");
+        tajaDiv.style.width = TAJAWIDTH + "px";
+        tajaDiv.style.height = TAJAHEIGHT + "px";
+        tajaDiv.style.position = "absolute";
+        tajaDiv.style.textAlign = "center";
+        tajaDiv.innerHTML = taja[idx++];
+        tajaContents.appendChild(tajaDiv);
+
+        if (leftWidth + TAJAWIDTH >= tajaContents.offsetWidth) {
+            tajaDiv.style.left = (leftWidth - TAJAWIDTH) + "px";
+        } else {
+            tajaDiv.style.left = leftWidth + "px";
+        }
+
+
+        newObj.push(tajaDiv);
+
+
+        if (newObj.length === taja.length) {
+            clearInterval(drawInterval);
+        }
+    }, DRAWTIME);
+}
+
+</script>
+<script type="text/javascript">
+
+function downTaja() {
+    setInterval(function () {
+        for (let i = 0; i < taja.length; i++) {
+            if (i < newObj.length) {
+                newObj[i].style.top = plusTop[i] + "px";
+
+                if (plusTop[i] + TAJAHEIGHT >= tajaContents.offsetHeight) {
+                    if (tajaContents.contains(newObj[i])) {
+                        tajaContents.removeChild(newObj[i]);
+                        life--;
+                        lifeDiv.innerHTML = "LIFE : " + life;
+
+                        if (life === 0) {
+                            alert('5개의 생명을 모두 사용하셨습니다.');
+                            alert('총 ' + score + '점을 획득하였습니다.');
+                            location.reload();
+                        }
+
+
+                        if (newObj.length === taja.length) {
+                            if (!tajaContents.hasChildNodes()) {
+                                alert('게임이 끝났습니다.');
+                                alert('총 ' + score + '점을 획득하였습니다.');
+                                location.reload();
+                            }
+                        }
+
+                    }
+                }
+                plusTop[i] += 30;
+            }
+        }
+    }, DOWNTIME);
+
+}
+
+
+var tajaText = document.getElementById("tajaText");
+tajaText.addEventListener("keydown", function (e) {
+
+    if (e.keyCode === 13) {
+        for (let i = 0; i < newObj.length; i++) {
+
+            if (tajaText.value === newObj[i].innerHTML) {
+                tajaContents.removeChild(newObj[i]);
+                score += 100;
+                scoreDiv.innerHTML = "SCORE : " + score;
+
+
+                if (newObj.length === taja.length) {
+                    if (!tajaContents.hasChildNodes()) {
+                        alert('다음 단계로 이동합니다.(준비중)');
+                        alert('총 ' + score + '점을 획득하였습니다.');
+                        location.reload();
+                    }
+
+                }
+
+            }
+        }
+
+        tajaText.value = "";
+    }
+});
+
+
+var count = 0;
+
+
+var tajaBtn = document.getElementById("tajaBtn");
+tajaBtn.addEventListener("click", function () {
+
+    if (count === 0) {
+        drawTaja();
+        downTaja();
+    }
+    count++;
+});
+
+
+</script>
+{% endblock %}

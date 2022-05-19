@@ -19,22 +19,25 @@
 </style>
 <header>
     <div style="height: 5rem; border-radius: 1rem; margin-left: 2rem; margin-top: 1rem; width: 96%;">
-        <div style="display: inline-block; width: 20%; margin-right: 13%">
+        <div style="display: inline-block; width: 20%; margin-right: 7%">
             <div style="display: inline-block; color: #504DD2; font-family: 'Cabin', sans-serif; font-size: 50px;">
                 <a style="text-decoration: none; color: #504DD2" href="{% url 'mainapp:mainpage' %}">
                 code<span style="color:#14128F">s</span>
                 </a>
             </div>
         </div>
-        <div style="display: inline-block; width: 40%; text-align: center; margin-right: 5%;" class="korean">
-            <div style="display: inline-block; margin-right: 4rem;">
+        <div style="display: inline-block; width: 50%; text-align: center; margin-right: 2%;" class="korean">
+            <div style="display: inline-block; margin-right: 3rem;">
                 <a class="div2" style="text-decoration: none;" href="{% url 'mainapp:mainpage' %}">홈</a>
             </div>
-            <span style="display: inline-block; margin-right: 4rem;">
+            <div style="display: inline-block; margin-right: 4rem;">
                 <a  class="div2"  style="text-decoration: none;" href="{% url 'practiceapp:firstpractice' %}">타자연습</a>
-            </span>
+            </div>
             <div style="display: inline-block; margin-right: 4rem;">
                 <a  class="div2"  style="text-decoration: none;" href="{% url 'upracticeapp:ufirstpractice' %}">나의코드</a>
+            </div>
+            <div style="display: inline-block; margin-right: 4rem;">
+                <a  class="div2"  style="text-decoration: none;" href="{% url 'gameapp:playgame' %}">타자게임</a>
             </div>
             <div style="display: inline-block; margin-right: 4rem;">
                 <a  class="div2"  style="text-decoration: none;" href="{% url 'boardapp:detail' pk=1 %}">커뮤니티</a>
