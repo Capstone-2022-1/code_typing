@@ -7,19 +7,35 @@
 
 
 {% block content %}
-<div style="margin-top: 15rem">
-    <div  style="height: 20rem; border-radius: 1rem; margin-left: auto; margin-right: auto;">
 
-        <div style="text-align: center; margin-left: auto; margin-right: auto;">
-            <h1>
-                <div style="display: inline-block; color: #504DD2; font-family: 'Cabin', sans-serif; font-size: 3rem;">code<span style="color:#14128F">s</span></div>
-                <div style="display: inline-block"class="korean">와 함께 하는</div>
-            </h1>
-            <h1>
-                <div style="display: inline-block"class="korean">코드 타자 연습</div>
-            </h1>
-        </div>
+
+<div style="height: 35rem;width: 100%">
+    <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active" data-bs-interval="3000">
+      <img src="static/main_img/main1.png" class="d-block w-100" alt="" height="100%" width="100%">
     </div>
+    <div class="carousel-item" data-bs-interval="3000">
+      <img src="static/main_img/main2.png" class="d-block w-100" alt="" height="100%" width="100%">
+    </div>
+    <div class="carousel-item" data-bs-interval="3000">
+      <img src="static/main_img/main3.png" class="d-block w-100" alt="" height="100%" width="100%">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
 </div>
 
 
