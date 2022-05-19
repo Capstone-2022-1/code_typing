@@ -7,3 +7,6 @@ class CommentCreationForm(ModelForm):
     class Meta:
         model = Comment
         fields = ['comment_content']
+        labels = {
+            'comment_content': '댓글 작성'
+        }

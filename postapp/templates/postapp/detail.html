@@ -25,12 +25,12 @@
                 <div style="display: inline-block; width: 50%; text-align: end">
                     <div style="display: inline-block">
                         <a href="{% url 'postapp:update' pk=target_post.pk %}" style="text-decoration: none">
-                        <p style="color: gray">수정하기</p>
+                        <p style="color: blue">수정</p>
                         </a>
                     </div>
                     <div style="display: inline-block">
                         <a href="{% url 'postapp:delete' pk=target_post.pk %}" style="text-decoration: none">
-                        <p style="color: gray">삭제하기</p>
+                        <p style="color: red">삭제</p>
                         </a>
                     </div>
                     <div style="display: inline-block">조회수 : {{ target_post.post_viewnum }}</div>
