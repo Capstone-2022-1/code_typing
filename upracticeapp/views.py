@@ -1,6 +1,7 @@
 from django.shortcuts import render
 
 # Create your views here.
+from django.views.generic import ListView
 from upracticeapp.models import Upractice
 
 def upractice_main(request):
