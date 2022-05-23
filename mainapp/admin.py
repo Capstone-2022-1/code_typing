@@ -6,9 +6,12 @@ from django.contrib import admin
 from boardapp.models import PostCategory
 from commentapp.models import Comment
 from postapp.models import Post
-
+from practiceapp.models import Practice
+from upracticeapp.models import Upractice
 
 admin.site.register(Post)
 admin.site.register(PostCategory)
 admin.site.register(Comment)
+admin.site.register(Practice)
+admin.site.register(Upractice)
 

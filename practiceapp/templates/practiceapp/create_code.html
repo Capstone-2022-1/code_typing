@@ -1,0 +1,40 @@
+<style>
+    .korean{
+        font-family: 'Nanum Gothic Coding', monospace;
+    }
+</style>
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <div style="height: auto; width: 100%; display: flex; justify-content: center">
+        <div style="display: block; height: auto; width: 90%">
+            <div style="height: 26rem; width: 100%">
+                <form action="{% url 'practiceapp:create' %}" method="get">
+                    {% csrf_token %}
+                        <select name="lang">
+                            <option value="python">python</option>
+                            <option value="css">css</option>
+                            <option value="html">html</option>
+                            <option value="javascript">javascript</option>
+                        </select>
+                        <input type="text" placeholder="코드를 입력하세요" maxlength="1000"
+                               style="height:15rem; width:100%;border:1px solid #504DD2;" name="content">
+                        <input type="text" placeholder="결과를 입력하세요" maxlength="1000"
+                               style="height:8rem; width:100%;border:1px solid #504DD2;" name="result">
+                        <input type="text" placeholder="출처를 입력하세요" maxlength="256"
+                               style="height:3rem; width:100%;border:1px solid #504DD2;" name="source">
+                        <div style="display: flex; justify-content: center; height: 3rem; width: 100%">
+                            <div style="height: 3rem; width: 100%; text-align: end">
+                                    <input type="submit" value="확인">
+                            </div>
+                        </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
+{% endblock %}
