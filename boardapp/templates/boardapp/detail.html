@@ -2,35 +2,52 @@
 
 {% block content %}
 <style>
-.w-btn {
-    position: relative;
-    border: none;
-    display: inline-block;
-    padding: 5px 30px;
-    border-radius: 15px;
-    font-family: "paybooc-Light", sans-serif;
-    text-decoration: none;
+    .korean{
+        font-family: 'Nanum Gothic Coding', monospace;
+    }
+
+    .w-btn {
+        position: relative;
+        border: none;
+        display: inline-block;
+        padding: 5px 30px;
+        border-radius: 15px;
+        font-family: "paybooc-Light", sans-serif;
+        text-decoration: none;
     }
     .w-btn-ccc {
     background-color: #CCCBF2;
     color: black;
     }
+    .title_in_detail{
+        border-top: 1.5px solid #504DD2;
+        border-bottom: 1.5px solid #504DD2;
+        margin-right: 2rem;
+        margin-left: 2rem;
+        text-align: center;
+        padding-top: .5rem;
+        padding-bottom: .5rem
+
+    }
+    div a{
+        text-decoration: none;
+        color: black;
+    }
 </style>
 
-<div style="height: 32rem">
+<div class="korean" style="height: 32rem">
 
     <div style="margin:3rem 2rem 1rem 2rem;text-align: left;">
         <p>
-            <a href="{% url 'boardapp:detail' pk=1 %}" style="text-decoration: none; color: black">공지사항</a>
+            <a href="{% url 'boardapp:detail' pk=1 %}" >공지사항</a>
             |
-            <a href="{% url 'boardapp:detail' pk=2 %}" style="text-decoration: none; color: black">자유게시판</a>
+            <a href="{% url 'boardapp:detail' pk=2 %}" >자유게시판</a>
             |
-            <a href="{% url 'boardapp:detail' pk=3 %}" style="text-decoration: none; color: black">질문게시판</a>
+            <a href="{% url 'boardapp:detail' pk=3 %}" >질문게시판</a>
         </p>
     </div>
 
-    <div style="border-top: 1.5px solid #504DD2;border-bottom: 1.5px solid #504DD2;
-    margin-right: 2rem;margin-left: 2rem; text-align: center; padding-top: .5rem; padding-bottom: .5rem">
+    <div class="title_in_detail korean">
         <div style="display:inline-block; width: 5%;height: auto">번호</div>
         <div style="display:inline-block; width: 45%;">제목</div>
         <div style="display:inline-block; width: 10%;">글쓴이</div>
@@ -44,7 +61,7 @@
 
 </div>
 
-<div style="margin-top:3rem; margin-right:2rem; text-align: right">
+<div class="korean" style="margin-top:3rem; margin-right:2rem; text-align: right">
     <a href="{% url 'postapp:create' %}" class="w-btn w-btn-ccc col-1.5 mt-4">
         글쓰기
     </a>

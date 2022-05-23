@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    .w-btn {
+    position: relative;
+    border: none;
+    display: inline-block;
+    padding: 5px 30px;
+    border-radius: 15px;
+    font-family: "paybooc-Light", sans-serif;
+    text-decoration: none;
+    }
+    .w-btn-ccc {
+    background-color: #CCCBF2;
+    color: black;
+    }
+    .name {
+        border-top: 1.5px solid #504DD2;
+        border-bottom: 1.5px solid #504DD2;
+        margin-right: 2rem;margin-left: 2rem;
+        text-align: center; padding-top: .5rem;
+        padding-bottom: .5rem;
+
+    }
+</style>
+
+<div style="height: 32rem ">
+    <div style="margin: 5.5rem"></div>
+
+    <div class="name">
+        <div style="display:inline-block; width: 3%; margin-right: 25rem">번호</div>
+        <div style="display:inline-block; width: 40%; margin-right: 5rem">제목</div>
+        <div style="display:inline-block; width: 20%;">작성일</div>
+    </div>
+    {% include 'snippets/list_category.html' with post_list=object_list %}
+
+
+</div>
+<div style="margin-top:3rem; margin-right:2rem; text-align: right">
+    <a href="{% url 'upracticeapp:ufirstpractice' %}" class="w-btn w-btn-ccc col-1.5 mt-4">
+        글쓰기
+    </a>
+    </div>
+
+    {% include 'snippets/pagination.html' with page_obj=page_obj %}
+
+{% endblock %}
