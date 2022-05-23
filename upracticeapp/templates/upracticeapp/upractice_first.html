@@ -20,20 +20,34 @@
     background-color: #CCCBF2;
     color: black;
     }
+    .korean{
+        font-family: 'Nanum Gothic Coding', monospace;
+    }
 </style>
 
-<div style="height: 40rem; width: 100%;display: flex; justify-content: center; margin-top: 2rem">
-    <div style="display:inline-block;height: 7%; width: 4%;margin-top: 1.5rem;text-align: center; padding-top:.5rem">제목</div>
+<div class="korean" style="height: 40rem; width: 100%;display: flex; justify-content: center; margin-top: 2rem">
+    <div style="display:inline-block;height: 7%; width: 4%;margin-top: 1.5rem;text-align: center;padding-top:.5rem">제목</div>
     <div style="display:inline-block;height: 100%; width: 90%;">
         <div style="height: 7%; width: auto; display: block; margin: 1rem;padding-top:.5rem">
-            <form action="{% url 'upracticeapp:ufirstpractice' %}" method="get">
+            <form action="" method="post">
                 {% csrf_token %}
-                <input type="text" name="utitle" placeholder="제목을 입력하세요" maxlength="50"
-                       style="height:2.8rem; width:100%;border:1px solid #504DD2;">
-                <input type="text" name="ucontent" placeholder="내용을 입력하세요" maxlength="500" style="height:22rem; width:100%;border:1px solid #504DD2;">
-                <input type="text" name="uresult" placeholder="설명을 입력하세요" maxlength="300" style="height:8rem; width:100%;border:1px solid #504DD2;">
-                <input type="submit" class="w-btn w-btn-ccc col-1.5 mt-4" value="업로드">
+                <input type="text" placeholder="제목을 입력하세요" maxlength="50" style="height:2.8rem; width:100%;border:1px solid #504DD2;">
             </form>
+        </div>
+        <div style="border: 1px solid #504DD2;height: 22rem; width: auto; display: block; margin: 1rem; overflow-y: scroll">
+            <form action="" method="post">
+                {% csrf_token %}
+                <input type="text" placeholder="내용을 입력하세요" maxlength="500" style="height:22rem; width:100%;border:0px solid #504DD2;">
+            </form>
+        </div>
+        <div style="height: 20%; width: auto; display: block; margin: 1rem">
+            <form action="" method="post">
+                {% csrf_token %}
+                <input type="text" placeholder="설명을 입력하세요" maxlength="300" style="height:8rem; width:100%;border:1px solid #504DD2;">
+            </form>
+        </div>
+        <div style="height: 10%; width: auto; display: block; margin: 1rem;display: flex; justify-content: right;">
+            <input type="submit" class="w-btn w-btn-ccc col-1.5 mt-4" value="업로드">
         </div>
     </div>
 </div>

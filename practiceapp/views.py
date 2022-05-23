@@ -1,3 +1,5 @@
+from random import random
+
 from django.shortcuts import render
 
 # Create your views here.
@@ -37,3 +39,21 @@ def create_code(request):
 
     return render(request, "practiceapp/create_code.html")
 
+
+
+def practice_second(request):
+    try:
+        if request.method == "GET":
+            if request.GET in 'python':
+                lang = request.GET['python']
+                code = Practice.objects.filter(code_language=lang)
+
+                context ={'code_select': code}
+
+                return render(request, "practiceapp/practice_second.html", context)
+            return render(request, "practiceapp/practice_second.html")
+
+    except Exception as identifier:
+        print(identifier)
+
+    return render(request, "practiceapp/practice_second.html")
