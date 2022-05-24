@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<style>
+.w-btn {
+    position: relative;
+    border: none;
+    display: inline-block;
+    padding: 8px 30px;
+    border-radius: 15px;
+    font-family: "paybooc-Light", sans-serif;
+    text-decoration: none;
+    transition: 0.25s;
+}
+.w-btn-ccc {
+    background-color: #CCCBF2;
+    color: black;
+}
+</style>
+
+
+<div style="height: 40rem; width: 100%; display: flex; justify-content: center; margin-top: 2rem">
+    <div style="height: 100%; width: 90%;">
+        <div style="height: 8%; width: 100%;">
+            <div style="display:inline-block; height: 100%; width: auto; padding-top: .5rem;padding-left: .5rem; font-size: 30px">
+                {{ upractice_data.upractice_title }}
+            </div>
+        </div>
+        <div style="height: 10%; width: 100%; text-align: end; font-size: 30px;">?</div>
+        <div style="height: 72%; width: 100%; border: 1px solid #504DD2; overflow-y: scroll">
+            {{ upractice_data.upractice_content }}
+        </div>
+        <div style="height: 10%; width: 100%;">
+            <div style="display: inline-block; height: 100%; width: 49.5%;vertical-align: top">
+            </div>
+            <div style="display: inline-block; height: 100%; width: 50%; text-align: end">
+                    <input type="submit" class="w-btn w-btn-ccc col-4 mt-4" value="완료">
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

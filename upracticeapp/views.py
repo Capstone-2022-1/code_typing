@@ -16,7 +16,7 @@ def upractice_first(request):
             print(utitle, ucontent, uresult, len(ucontent))
 
             upractice_data = Upractice()
-            upractice_data.upractice_title= utitle
+            upractice_data.upractice_title = utitle
             upractice_data.upractice_content = ucontent
             upractice_data.upractice_result = uresult
             upractice_data.upractice_chnum = len(ucontent)
@@ -30,3 +30,18 @@ def upractice_first(request):
         print(identifier)
 
     return render(request, "upracticeapp/upractice_first.html")
+
+def upractice_second(request):
+    try:
+        if request.method == "POST":
+            utitle = request.GET.get('utitle')
+            ucontent = request.GET.get('ucontent')
+            uresult = request.GET.get('uresult')
+
+            return render(request, "upracticeapp/upractice_second.html")
+
+    except Exception as identifier:
+        print(identifier)
+
+    return render(request, "upracticeapp/upractice_second.html")
+

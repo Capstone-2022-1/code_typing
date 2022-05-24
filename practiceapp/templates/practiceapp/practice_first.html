@@ -17,11 +17,12 @@
                 <div style="height: 13rem;padding:0.5rem">
                     <div style="padding:1rem;border: 1px solid #504DD2; float: left; width: 48%;height: 100%;border-radius: 2rem;margin-right: 4%">
                         <div style="color:#14128F;text-align:left;float: left;width: 50%;height: 100%">
-<!--                            <form action="{% url 'practiceapp:secondpractice' %}" method="get">-->
-<!--                                {% csrf_token %}-->
-<!--                                <input type="submit" name="python" value="PYTHON">-->
-<!--                            </form>-->
-                            <div style="color:#14128F;text-align:left;float: left;width: 50%;height: 100%">PYTHON</div>
+                            <div style="color:#14128F;text-align:left;float: left;width: 50%;height: 100%">
+                                <form action="{% url 'practiceapp:second' %}" method="get">
+                                    {% csrf_token %}
+                                    <input type="submit" name="python" value="PYTHON">
+                                </form>
+                            </div>
                         </div>
                         <div style="color:#14128F;text-align:right;float: left;width: 50%;height: 100%">
                             <div style="width: 100%;height: 75%">→</div>

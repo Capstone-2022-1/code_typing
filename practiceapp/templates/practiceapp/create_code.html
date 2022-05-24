@@ -10,13 +10,12 @@
     <div style="height: auto; width: 100%; display: flex; justify-content: center">
         <div style="display: block; height: auto; width: 90%">
             <div style="height: 26rem; width: 100%">
-                <form action="{% url 'practiceapp:create' %}" method="get">
+                <form action="{% url 'practiceapp:create' %}" method="post">
                     {% csrf_token %}
-                        <select name="lang">
-                            <option value="python">python</option>
-                            <option value="css">css</option>
-                            <option value="html">html</option>
-                            <option value="javascript">javascript</option>
+                        <select name="language_id">
+                            {% for lang in lang %}
+                            <option value="{{ lang.language_id }}">{{ lang.language }}</option>
+                            {% endfor %}
                         </select>
                         <input type="text" placeholder="코드를 입력하세요" maxlength="1000"
                                style="height:15rem; width:100%;border:1px solid #504DD2;" name="content">

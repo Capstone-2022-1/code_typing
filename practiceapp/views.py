@@ -3,57 +3,52 @@ from random import random
 from django.shortcuts import render
 
 # Create your views here.
-from practiceapp.models import Practice
+from practiceapp.models import Language, Practice
 
 
 def practice_first(request):
     return render(request, "practiceapp/practice_first.html")
 
+def practice_create(request):
+    if request.method == "GET":
+        lang = Language.objects.all()
+        context = {'lang':lang}
+        return render(request, "practiceapp/create_code.html", context)
+    elif request.method == "POST":
+        language_id = request.POST.get('language_id')
+        content = request.POST.get('content')
+        result = request.POST.get('result')
+        source = request.POST.get('source')
+        print(language_id, content, result, source, len(content))
 
-def create_code(request):
-    try:
-        if request.method == "GET":
-            if request.GET['lang'] in ['python', 'css', 'html', 'javascript']:
-                language = request.GET['lang']
-                content = request.GET.get('content')
-                result = request.GET.get('result')
-                source = request.GET.get('source')
-                print(language,content,result,source,len(content))
+        practice_data = Practice()
+        practice_data.code_language = Language.objects.get(pk=language_id)
+        practice_data.code_content = content
+        practice_data.code_result = result
+        practice_data.code_source = source
+        practice_data.practice_chnum = len(content)
+        practice_data.save()
 
-                practice_data = Practice()
-                practice_data.code_language = language
-                practice_data.code_content = content
-                practice_data.code_result = result
-                practice_data.code_source = source
-                practice_data.practice_chnum = len(content)
-                practice_data.save()
 
-                context = {'language':language, 'content':content, 'result':result, 'source':source}
+        context = {'language_id': language_id, 'content': content, 'result': result, 'source': source}
 
-                return render(request, "practiceapp/create_code.html", context)
-
-            return render(request, "practiceapp/create_code.html")
-
-    except Exception as identifier:
-        print(identifier)
-
-    return render(request, "practiceapp/create_code.html")
-
+        return render(request, "practiceapp/practice_first.html", context)
+    return render(request, "practiceapp/practice_first.html")
 
 
 def practice_second(request):
-    try:
-        if request.method == "GET":
-            if request.GET in 'python':
-                lang = request.GET['python']
-                code = Practice.objects.filter(code_language=lang)
+    if request.method == "GET":
+        if 'python' in request.GET:
+            l = Language.objects.filter(language='python')
+            print(l)
+            i = Language.objects.get(pk=1)
+            print(i)
+            p = Practice.objects.filter(code_language=i)
+            context = {'l':l, 'p':p}
+            return render(request, 'practiceapp/practice_second.html', context)
+        return render(request, 'practiceapp/practice_second.html')
 
-                context ={'code_select': code}
 
-                return render(request, "practiceapp/practice_second.html", context)
-            return render(request, "practiceapp/practice_second.html")
 
-    except Exception as identifier:
-        print(identifier)
 
-    return render(request, "practiceapp/practice_second.html")
+
