@@ -1,4 +1,4 @@
-from random import random
+import random
 
 from django.shortcuts import render
 
@@ -44,6 +44,10 @@ def practice_second(request):
             i = Language.objects.get(pk=1)
             print(i)
             p = Practice.objects.filter(code_language=i)
+            pp = list(p)
+            print(pp)
+            ppp = random.choice(pp)
+            print(ppp)
             context = {'l':l, 'p':p}
             return render(request, 'practiceapp/practice_second.html', context)
         return render(request, 'practiceapp/practice_second.html')

@@ -19,4 +19,4 @@ class Practice(models.Model):
     code_source = models.CharField(max_length=256,null=True)
 
     def __str__(self):
-        return str(self.practice_id) + ' - ' + str(self.code_language) + ' - ' + str(self.practice_chnum)
+        return str(self.practice_id)
