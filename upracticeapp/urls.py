@@ -8,5 +8,5 @@ app_name = 'upracticeapp'
 urlpatterns = [
     path('', upractice_main, name='mainupractice'),
     path('ucreate/', upractice_first, name='ufirstpractice'),
-    path('second/', upractice_second, name='usecondpractice'),
+    path('second/<int:pk>', upractice_second, name='usecondpractice'),
 ]

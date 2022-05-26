@@ -1,0 +1,30 @@
+<div>
+    {% if uall %}
+    <div style="text-align: center;margin-left: 2rem;margin-right: 2rem">
+    {% for list in uall %}
+        <div style="border-bottom: 1px solid #504DD2;text-align: center;padding-top: .3rem; padding-bottom: .3rem">
+        <div style="display:inline-block; width: 5%;">
+            {{ list.upractice_id }}
+        </div>
+        <div style="display:inline-block; width: 45%;">
+            <form href="{% url 'upracticeapp:usecondpractice' pk=list.upractice_id %}" style="text-decoration: none; color: black" method="post">
+                <div style="margin:0rem;padding: 0rem">
+                    {% csrf_token %}
+                    <!--<input type="submit" value="{{ list.upractice_id }}">-->
+                    {{ list.upractice_title | truncatechars:15 }}
+                </div>
+            </form>
+        </div>
+        <div style="display:inline-block; width: 40
+        %;">
+            {{ list.upractice_chnum }}
+        </div>
+    </div>
+    {% endfor %}
+    </div>
+    {% else %}
+    <div style="text-align: center;margin-top: 2rem">
+        <h4>게시글이 없습니다.</h4>
+    </div>
+    {% endif %}
+</div>

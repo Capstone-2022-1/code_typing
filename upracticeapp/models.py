@@ -8,6 +8,7 @@ class Upractice(models.Model):
     upractice_content = models.TextField(null=False)
     upractice_result = models.TextField(null=False)
     upractice_chnum = models.IntegerField(null=False)
+    #upractice_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return str(self.upractice_id) + ' - ' + str(self.upractice_title) + ' - ' + str(self.upractice_chnum)

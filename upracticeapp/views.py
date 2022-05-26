@@ -5,7 +5,9 @@ from django.views.generic import ListView
 from upracticeapp.models import Upractice
 
 def upractice_main(request):
-    return render(request, "upracticeapp/upractice_main.html")
+    uall = Upractice.objects.all() #main에서 들어오는 Upractice의 모든 값을 uall에 저장
+    context = {'uall': uall}
+    return render(request, "upracticeapp/upractice_main.html", context)
 
 def upractice_first(request):
     try:
@@ -34,9 +36,10 @@ def upractice_first(request):
 def upractice_second(request):
     try:
         if request.method == "POST":
-            utitle = request.GET.get('utitle')
-            ucontent = request.GET.get('ucontent')
-            uresult = request.GET.get('uresult')
+            upractice_id = request.POST.get('upractice_id')
+            print(upractice_id)
+            p = Upractice.objects.filter(Upractice_id=upractice_id)
+            context = {'p': p}
 
             return render(request, "upracticeapp/upractice_second.html")
 
