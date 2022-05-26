@@ -6,17 +6,16 @@
         <div style="display:inline-block; width: 5%;">
             {{ list.upractice_id }}
         </div>
-        <div style="display:inline-block; width: 45%;">
-            <form href="{% url 'upracticeapp:usecondpractice' pk=list.upractice_id %}" style="text-decoration: none; color: black" method="post">
+        <div style="display:inline-block; width: 60%; margin-left: 10%">
+            <a href="{% url 'upracticeapp:usecondpractice' pk=list.upractice_id %}" style="text-decoration: none; color: black" method="post">
                 <div style="margin:0rem;padding: 0rem">
                     {% csrf_token %}
                     <!--<input type="submit" value="{{ list.upractice_id }}">-->
                     {{ list.upractice_title | truncatechars:15 }}
                 </div>
-            </form>
+            </a>
         </div>
-        <div style="display:inline-block; width: 40
-        %;">
+        <div style="display:inline-block; width: 20%;">
             {{ list.upractice_chnum }}
         </div>
     </div>

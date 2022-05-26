@@ -35,16 +35,15 @@ def upractice_first(request):
 
 def upractice_second(request):
     try:
-        if request.method == "POST":
-            upractice_id = request.POST.get('upractice_id')
+        if request.method == "GET":
+            upractice_id = request.GET.get('upractice_id')
             print(upractice_id)
-            p = Upractice.objects.filter(Upractice_id=upractice_id)
+            p = Upractice.objects.filter(upractice_id=upractice_id)
             context = {'p': p}
 
-            return render(request, "upracticeapp/upractice_second.html")
+            return render(request, "upracticeapp/upractice_second.html", context)
 
     except Exception as identifier:
         print(identifier)
 
     return render(request, "upracticeapp/upractice_second.html")
-
