@@ -61,6 +61,10 @@ def practice_second(request):
             # print(jpractice_data)
             # print(type(jpractice_data))
 
+            context = {'l':l, 'practice_select':practice_select}
+            return render(request, 'practiceapp/practice_second.html', context)
+
+
         elif 'css' in request.GET:
             l = Language.objects.filter(language='css')
             i = Language.objects.get(pk=2)
@@ -72,6 +76,8 @@ def practice_second(request):
 
             context = {'l': l, 'practice_select': practice_select}
             return render(request, 'practiceapp/practice_second.html', context)
+
+
         elif 'html' in request.GET:
             l = Language.objects.filter(language='html')
             i = Language.objects.get(pk=3)
@@ -82,6 +88,8 @@ def practice_second(request):
             print(practice_select)
             context = {'l': l, 'practice_select': practice_select}
             return render(request, 'practiceapp/practice_second.html', context)
+
+
         elif 'javascript' in request.GET:
             l = Language.objects.filter(language='javascript')
             i = Language.objects.get(pk=4)
@@ -92,4 +100,5 @@ def practice_second(request):
             print(practice_select)
             context = {'l': l, 'practice_select': practice_select}
             return render(request, 'practiceapp/practice_second.html', context)
+
         return render(request, 'practiceapp/practice_second.html')
