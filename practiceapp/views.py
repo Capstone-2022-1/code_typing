@@ -1,5 +1,8 @@
 import random
+import json
+from urllib import parse
 
+from django.core import serializers
 from django.shortcuts import render
 
 # Create your views here.
@@ -46,6 +49,18 @@ def practice_second(request):
             random_practice = random.choice(practice_list)
             practice_select = Practice.objects.filter(pk=random_practice.practice_id)
             print(practice_select)
-            context = {'l':l, 'practice_select':practice_select}
+            # practice = serializers.serialize('json', practice_select)
+            # print(practice)
+            # print(type(practice))
+            # practice_data = Practice.objects.values()
+            # practice_data = list(practice_data)
+            # practice_data = practice_data[0]
+            # print(practice_data)
+            # print(type(practice_data))
+            # jpractice_data = json.dumps(practice_data)
+            # print(jpractice_data)
+            # print(type(jpractice_data))
+
+            context = {'l': l, 'practice_select': practice_select}
             return render(request, 'practiceapp/practice_second.html', context)
         return render(request, 'practiceapp/practice_second.html')

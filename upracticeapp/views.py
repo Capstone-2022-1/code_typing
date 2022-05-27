@@ -24,6 +24,7 @@ def upractice_first(request):
             upractice_data.upractice_result = uresult
             upractice_data.upractice_chnum = len(ucontent)
             upractice_data.save()
+            print(upractice_data)
 
             context = {'utitle': utitle, 'ucontent': ucontent, 'uresult': uresult}
 
