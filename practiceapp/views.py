@@ -40,19 +40,12 @@ def practice_second(request):
     if request.method == "GET":
         if 'python' in request.GET:
             l = Language.objects.filter(language='python')
-            print(l)
             i = Language.objects.get(pk=1)
-            print(i)
-            p = Practice.objects.filter(code_language=i)
-            pp = list(p)
-            print(pp)
-            ppp = random.choice(pp)
-            print(ppp)
-            context = {'l':l, 'p':p}
+            practice_lang = Practice.objects.filter(code_language=i)
+            practice_list = list(practice_lang)
+            random_practice = random.choice(practice_list)
+            practice_select = Practice.objects.filter(pk=random_practice.practice_id)
+            print(practice_select)
+            context = {'l':l, 'practice_select':practice_select}
             return render(request, 'practiceapp/practice_second.html', context)
         return render(request, 'practiceapp/practice_second.html')
-
-
-
-
-
