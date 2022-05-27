@@ -3,6 +3,9 @@
 
 {% block content %}
 <style>
+.korean{
+        font-family: 'Nanum Gothic Coding', monospace;
+    }
 .w-btn {
     position: relative;
     border: none;
@@ -54,40 +57,42 @@
 <div style="height: 40rem; width: 100%; display: flex; justify-content: center; margin-top: 2rem">
     <div style="height: 100%; width: 90%;">
         <div style="height: 8%; width: 100%;">
-            <div style="display:inline-block; height: 100%; width: auto; padding-top: .5rem;padding-left: .5rem; font-size: 30px">
+            <div style="display:inline-block; height: 100%; width: auto; padding-top: .5rem;
+            padding-left: .5rem; font-size: 20px; margin-bottom: 0;" class="korean">
                 {% for l in l %}
-                {{ l.language }}
+                언어: {{ l.language }}
                 {% endfor %}
 
             </div>
         </div>
         {% for p in practice_select %}
         <div>
-            <div id="test"> {{p.code_content}}</div>
-            <div style="height: 10%; width: 100%; text-align: end; font-size: 30px;">{{ p.code_result }}</div>
-            <div style="height: 28rem; width: 100%; border: 1px solid #504DD2; font-size: 50px; overflow-y: scroll", >
+            <div id="test" style="color: white">{{p.code_content}}</div>
+            <div style="height: 10%; width: 100%; text-align: end; font-size: 18px;" class="korean">결과: {{ p.code_result }}</div>
+            <div style="height: 26rem; width: 100%; border: 1px solid #504DD2; overflow-y: scroll">
 
-                    <div style="margin-top: 100px">
-                    <div id="text"></div>
+                    <div style="margin-top: 7px; margin-left: 10px;" class="korean">
+                    <div id="text" style="font-size: 20px; text-align: left;"></div>
             </div>
 
-                <div style="margin-top: 200px">
+   </div>
+            <div style="width: 100%; border: 1px solid #504DD2;">
+                <div style="font-size: 20px;" class="korean">
                      <span style="margin-left: 1rem" class="info">
                         <span> Letter score: </span> <span id="score">0</span>
                      </span>
                      <span style="text-align: center; float: right; margin-right: 1rem">
                          <span> Miss score: </span> <span id="miss">0</span>
                      </span>
-
-                    <span style="text-align: center; margin-left: 20rem">
+                    <span style="text-align: center; margin-left: 27rem">
                     <span id="timer"></span>
                     <span id = "seikai"></span>
                     </span>
       </div>
-   </div>
+            </div>
             </div>
             <div style="height: 10%; width: 100%;">
-                <div style="display: inline-block; height: 100%; width: 49.5%;vertical-align: top">
+                <div style="display: inline-block; height: 100%; width: 49.5%;vertical-align: top" class="korean">
                     출처 : {{ p.code_source }}
                 </div>
                 <div style="display: inline-block; height: 100%; width: 50%; text-align: end">
@@ -106,7 +111,7 @@
    var p = document.getElementById('text');
    const s = document.getElementById('test').innerText;
     var textLists = s;
-    alert(textLists);
+    {#alert(textLists);#}
 
     var checkTexts = [];
 
@@ -114,14 +119,14 @@
     createText();
 
     const timer = document.getElementById('timer');
-    let TIME = 120;
+    let TIME = 0;
     const seikai = document.getElementById('seikai');
 
 
     const countdown = setInterval(function() {
 
 
-            timer.textContent = '제한시간：' + --TIME + '초'
+            timer.textContent = '소요시간：' + ++TIME + '초'
             if(TIME <= 0) finish();
 
 
@@ -129,7 +134,7 @@
                 function finish() {
                 clearInterval(countdown);
 
-                seikai.textContent = '제한시간' + score + '초';
+                seikai.textContent = '소요시간' + score + '초';
                 state = false;
 
     }
