@@ -29,7 +29,7 @@
     <div style="display:inline-block;height: 7%; width: 4%;margin-top: 1.5rem;text-align: center;padding-top:.5rem">제목</div>
     <div style="display:inline-block;height: 100%; width: 90%;">
         <div style="height: 7%; width: auto; display: block; margin: 1rem;padding-top:.5rem">
-            <form action="{% url 'upracticeapp:ufirstpractice' %}" method="get" >
+            <form action="{% url 'upracticeapp:ufirstpractice' %}" method="post" >
 
                 {% csrf_token %}
 

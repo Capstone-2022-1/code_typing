@@ -1,3 +1,4 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
 # Create your views here.
@@ -11,10 +12,10 @@ def upractice_main(request):
 
 def upractice_first(request):
     try:
-        if request.method == "GET":
-            utitle = request.GET.get('utitle')
-            ucontent = request.GET.get('ucontent')
-            uresult = request.GET.get('uresult')
+        if request.method == "POST":
+            utitle = request.POST.get('utitle')
+            ucontent = request.POST.get('ucontent')
+            uresult = request.POST.get('uresult')
             print(utitle, ucontent, uresult, len(ucontent))
 
             upractice_data = Upractice()
