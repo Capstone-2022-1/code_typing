@@ -26,7 +26,8 @@ def upractice_first(request):
             upractice_data.save()
             print(upractice_data)
 
-            context = {'utitle': utitle, 'ucontent': ucontent, 'uresult': uresult}
+            uall = Upractice.objects.all()  # main에서 들어오는 Upractice의 모든 값을 uall에 저장
+            context = {'uall': uall}
 
             return render(request, "upracticeapp/upractice_main.html", context)
 

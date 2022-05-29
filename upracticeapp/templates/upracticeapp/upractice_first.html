@@ -30,14 +30,11 @@
     <div style="display:inline-block;height: 100%; width: 90%;">
         <div style="height: 7%; width: auto; display: block; margin: 1rem;padding-top:.5rem">
             <form action="{% url 'upracticeapp:ufirstpractice' %}" method="post" >
-
                 {% csrf_token %}
-
                 <textarea type="text" placeholder="제목을 입력하세요" maxlength="50" style="height:2.8rem; width:100%;border:1px solid #504DD2;" name="utitle"></textarea>
                 <textarea type="text" placeholder="내용을 입력하세요" maxlength="500" style="height:22rem; width:100%;border:1px solid #504DD2;" name="ucontent"></textarea>
                 <textarea type="text" placeholder="설명을 입력하세요" maxlength="300" style="height:8rem; width:100%;border:1px solid #504DD2;" name="uresult"></textarea>
                 <input type="submit" class="w-btn w-btn-ccc col-1.5 mt-4" value="업로드">
-
             </form>
         </div>
     </div>
