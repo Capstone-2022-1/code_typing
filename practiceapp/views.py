@@ -102,3 +102,8 @@ def practice_second(request):
             return render(request, 'practiceapp/practice_second.html', context)
 
         return render(request, 'practiceapp/practice_second.html')
+
+
+
+def practice_result(request):
+    return render(request, 'practiceapp/practice_result.html')
