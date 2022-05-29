@@ -66,9 +66,17 @@
             </div>
         </div>
         {% for p in practice_select %}
-        <div>
-            <div id="test" style="color: white">{{p.code_content}}</div>
-            <div style="height: 10%; width: 100%; text-align: end; font-size: 18px;" class="korean">결과: {{ p.code_result }}</div>
+        <div style="height:82%; width: 100%;">
+            <div style="text-align:right;height: 6%; width: 100%; font-size: 18px;" class="korean">
+                <a data-bs-toggle="collapse" href="#collapseExample" role="button"
+                   aria-expanded="false" aria-controls="collapseExample" style="text-decoration: none;color:#504DD2">?</a>
+                <div class="collapse" id="collapseExample">
+                    <div class="card card-body">
+                        <pre>{{ p.code_result }}</pre>
+                    </div>
+                </div>
+            </div>
+            <div id="test" style="color: white;">{{p.code_content}}</div>
             <div style="height: 26rem; width: 100%; border: 1px solid #504DD2; overflow-y: scroll">
 
                     <div style="margin-top: 7px; margin-left: 10px;" class="korean">
