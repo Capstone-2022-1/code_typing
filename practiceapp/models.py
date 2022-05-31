@@ -1,6 +1,9 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 # Create your models here.
+from upracticeapp.models import Upractice
+
 
 class Language(models.Model):
     language_id = models.AutoField(primary_key=True)
@@ -20,3 +23,19 @@ class Practice(models.Model):
 
     def __str__(self):
         return str(self.practice_id)
+
+
+
+class Presult(models.Model):
+    presult_id = models.AutoField(primary_key=True)
+    presult_accuracy = models.DecimalField(max_digits=5, decimal_places=2)
+    presult_speed = models.IntegerField(null=False)
+    date_time = models.DateTimeField(auto_now_add=True)
+    presult_time = models.IntegerField(null=False)
+    presult_false_num = models.IntegerField(null=False)
+    presult_summary = models.TextField(null=False)
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
+    practice_id = models.ForeignKey(Practice, on_delete=models.CASCADE, null=False)
+
+    def __str__(self):
+        return str(self.presult_id) + ' - ' + str(self.user_id)
