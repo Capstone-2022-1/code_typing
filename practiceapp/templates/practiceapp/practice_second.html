@@ -100,7 +100,7 @@
                     출처 : {{ p.code_source }}
                 </div>
                 <div style="display: inline-block; height: 100%; width: 50%; text-align: end">
-                        <input type="submit" class="w-btn w-btn-ccc col-4 mt-4" value="완료">
+                    <a href="{% url 'practiceapp:result' %}" class="w-btn w-btn-ccc col-4 mt-4" value="완료"></a>
                 </div>
             </div>
         </div>
@@ -115,7 +115,6 @@
    var p = document.getElementById('text');
    const s = document.getElementById('test').innerText;
     var textLists = s;
-    {#alert(textLists);#}
 
     var checkTexts = [];
 

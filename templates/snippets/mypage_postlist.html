@@ -1,0 +1,31 @@
+<div>
+    {% if post_list %}
+    <div style="text-align: center;margin-left: 2rem;margin-right: 2rem">
+        {% for list in post_list %}
+        <div style="border-bottom: 1px solid #504DD2;text-align: center;padding-top: .3rem; padding-bottom: .3rem">
+            <div style="display:inline-block; width: 5%;">
+                {{ list.post_id }}
+            </div>
+            <div style="display:inline-block; width: 18%;">
+                {{ list.category }}
+            </div>
+            <div style="display:inline-block; width: 38%;">
+                <a href="{% url 'postapp:detail' pk=list.pk %}" style="text-decoration: none; color: black">
+                    <div style="margin:0rem;padding: 0rem">
+                        {{ list.post_title | truncatechars:10 }}
+                    </div>
+                </a>
+
+            </div>
+            <div style="display:inline-block; width: 32%;">
+                {{ list.post_wdate }}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div style="text-align: center;margin-top: 2rem">
+        <h4>게시글이 없습니다.</h4>
+    </div>
+    {% endif %}
+</div>
