@@ -1,3 +1,206 @@
+{#{% extends 'base.html' %}#}
+{##}
+{##}
+{#{% block content %}#}
+{#<style>#}
+{#.korean{#}
+{#        font-family: 'Nanum Gothic Coding', monospace;#}
+{#    }#}
+{#.w-btn {#}
+{#    position: relative;#}
+{#    border: none;#}
+{#    display: inline-block;#}
+{#    padding: 8px 30px;#}
+{#    border-radius: 15px;#}
+{#    font-family: "paybooc-Light", sans-serif;#}
+{#    text-decoration: none;#}
+{#    transition: 0.25s;#}
+{#}#}
+{#.w-btn-ccc {#}
+{#    background-color: #CCCBF2;#}
+{#    color: black;#}
+{#}#}
+{#   #text {#}
+{#    font-size: 1em;#}
+{#    font-weight: bold;#}
+{#    color:#666;#}
+{#    text-align: center;#}
+{#   }#}
+{##}
+{#   span {#}
+{#      transition: all 300ms 0s ease;#}
+{#   }#}
+{##}
+{#   .add-green {#}
+{##}
+{#      color: black;#}
+{#        font-weight: 900;#}
+{#   }#}
+{#   .add-red {#}
+{#      color: red;#}
+{#        font-weight: 900;#}
+{#   }#}
+{##}
+{#    h1 {#}
+{#      padding-left: 30%;#}
+{#   }#}
+{##}
+{#   #risutart {#}
+{#      bottom: 700px;#}
+{#      position: absolute;#}
+{#      font-weight: 200;#}
+{#   }#}
+{##}
+{#</style>#}
+{##}
+{##}
+{#<div style="height: 40rem; width: 100%; display: flex; justify-content: center; margin-top: 2rem">#}
+{#    <div style="height: 100%; width: 90%;">#}
+{#        <div style="height: 8%; width: 100%;">#}
+{#            <div style="display:inline-block; height: 100%; width: auto; padding-top: .5rem;#}
+{#            padding-left: .5rem; font-size: 20px; margin-bottom: 0;" class="korean">#}
+{#                {% for l in l %}#}
+{#                언어: {{ l.language }}#}
+{#                {% endfor %}#}
+{##}
+{#            </div>#}
+{#        </div>#}
+{#        {% for p in practice_select %}#}
+{#        <div style="height:82%; width: 100%;">#}
+{#            <div style="text-align:right;height: 6%; width: 100%; font-size: 18px;" class="korean">#}
+{#                <a data-bs-toggle="collapse" href="#collapseExample" role="button"#}
+{#                   aria-expanded="false" aria-controls="collapseExample" style="text-decoration: none;color:#504DD2">?</a>#}
+{#                <div class="collapse" id="collapseExample">#}
+{#                    <div class="card card-body">#}
+{#                        <pre>{{ p.code_result }}</pre>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#            <div id="test" style="color: white;">{{p.code_content}}</div>#}
+{#            <div style="height: 26rem; width: 100%; border: 1px solid #504DD2; overflow-y: scroll;padding: 3px">#}
+{#                <div id="text" style="font-size: 20px; text-align: left;" class="korean"></div>#}
+{#            </div>#}
+{#            <div style="width: 100%; border: 1px solid #504DD2;">#}
+{#                <div style="font-size: 20px;" class="korean">#}
+{#                     <span style="margin-left: 1rem" class="info">#}
+{#                        <span> Letter score: </span> <span id="score">0</span>#}
+{#                     </span>#}
+{#                     <span style="text-align: center; float: right; margin-right: 1rem">#}
+{#                         <span> Miss score: </span> <span id="miss">0</span>#}
+{#                     </span>#}
+{#                    <span style="text-align: center; margin-left: 27rem">#}
+{#                    <span id="timer"></span>#}
+{#                    <span id = "seikai"></span>#}
+{#                    </span>#}
+{#      </div>#}
+{#            </div>#}
+{#            </div>#}
+{#            <div style="height: 10%; width: 100%;">#}
+{#                <div style="display: inline-block; height: 100%; width: 49.5%;vertical-align: top" class="korean">#}
+{#                    출처 : {{ p.code_source }}#}
+{#                </div>#}
+{#                <div style="display: inline-block; height: 100%; width: 50%; text-align: end">#}
+{#                    <a href="{% url 'practiceapp:result' %}" class="w-btn w-btn-ccc col-4 mt-4" value="완료"></a>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#        {% endfor %}#}
+{#    </div>#}
+{#</div>#}
+{##}
+{##}
+{##}
+{#<script type="text/javascript">#}
+{##}
+{#   var p = document.getElementById('text');#}
+{#   const s = document.getElementById('test').innerText;#}
+{#    var textLists = s;#}
+{##}
+{#    var checkTexts = [];#}
+{##}
+{##}
+{#    createText();#}
+{##}
+{#    const timer = document.getElementById('timer');#}
+{#    let TIME = 0;#}
+{#    const seikai = document.getElementById('seikai');#}
+{##}
+{##}
+{#    const countdown = setInterval(function() {#}
+{##}
+{##}
+{#            timer.textContent = '소요시간：' + ++TIME + '초'#}
+{#            if(TIME <= 0) finish();#}
+{##}
+{##}
+{#            }, 1000);#}
+{#                function finish() {#}
+{#                clearInterval(countdown);#}
+{##}
+{#                seikai.textContent = '소요시간' + score + '초';#}
+{#                state = false;#}
+{##}
+{#    }#}
+{#    function createText() {#}
+{##}
+{#        p.textContent = '';#}
+{##}
+{#        checkTexts = textLists.split('').map(function(value) {#}
+{#            var span = document.createElement('span');#}
+{#            span.textContent = value;#}
+{#            p.appendChild(span);#}
+{##}
+{#            return span;#}
+{#        });#}
+{##}
+{#    }#}
+{##}
+{##}
+{#        const scoreLabel=document.getElementById("score");#}
+{#        const missLabel=document.getElementById("miss");#}
+{##}
+{#        let score = 0;#}
+{#        let miss = 0;#}
+{##}
+{#        let state = true;#}
+{##}
+{##}
+{##}
+{#        window.addEventListener('keydown', e => {#}
+{#        if(e.key === checkTexts[0].textContent) {#}
+{#            if(!state)return;#}
+{#            console.log("score");#}
+{#            checkTexts[0].className = 'add-green';#}
+{##}
+{#            score++;#}
+{#            scoreLabel.textContent=score;#}
+{##}
+{##}
+{##}
+{#            checkTexts.shift();#}
+{#        }else{#}
+{#            if(!state)return;#}
+{#            checkTexts[0].className = 'add-red';#}
+{#            var bool = event.shiftKey;#}
+{#            if(bool == true){#}
+{##}
+{#            }else if(bool == false){#}
+{#            miss++;#}
+{#            missLabel.textContent=miss;#}
+{#            }#}
+{##}
+{#        }#}
+{#            if(!checkTexts.length) createText();#}
+{##}
+{##}
+{#    });#}
+{#</script>#}
+{##}
+{##}
+{#{% endblock %}#}
+
+
+
 {% extends 'base.html' %}
 
 
@@ -76,7 +279,7 @@
                     </div>
                 </div>
             </div>
-            <div id="test" style="color: white;">{{p.code_content}}</div>
+            <div id="test" style="color: white;" >{{p.code_content}}</div>
             <div style="height: 26rem; width: 100%; border: 1px solid #504DD2; overflow-y: scroll;padding: 3px">
                 <div id="text" style="font-size: 20px; text-align: left;" class="korean"></div>
             </div>
@@ -99,8 +302,8 @@
                 <div style="display: inline-block; height: 100%; width: 49.5%;vertical-align: top" class="korean">
                     출처 : {{ p.code_source }}
                 </div>
-                <div style="display: inline-block; height: 100%; width: 50%; text-align: end">
-                    <a href="{% url 'practiceapp:result' %}" class="w-btn w-btn-ccc col-4 mt-4" value="완료"></a>
+                <div id="complete" style="display: inline-block; height: 100%; width: 50%; text-align: end">
+                    <input  type="submit" class="w-btn w-btn-ccc col-4 mt-4"  value="완료">
                 </div>
             </div>
         </div>
@@ -109,12 +312,13 @@
 </div>
 
 
-
 <script type="text/javascript">
 
    var p = document.getElementById('text');
    const s = document.getElementById('test').innerText;
-    var textLists = s;
+   var textLists = s;
+   var len_textLists = s.length;
+    // {##}
 
     var checkTexts = [];
 
@@ -125,36 +329,35 @@
     let TIME = 0;
     const seikai = document.getElementById('seikai');
 
+    const countdown = setInterval(function () {
 
-    const countdown = setInterval(function() {
-
-
-            timer.textContent = '소요시간：' + ++TIME + '초'
-            if(TIME <= 0) finish();
+        timer.textContent = '소요시간：' + ++TIME + '초'
+        if (TIME > 300) finish();
 
 
-            }, 1000);
-                function finish() {
-                clearInterval(countdown);
-
-                seikai.textContent = '소요시간' + score + '초';
-                state = false;
+    }, 1000);
+    function finish() {
+        alert(TIME / 60 + '분 경과\n시간초과')
+        clearInterval(countdown);
+        seikai.textContent = '점수' + score + '점';
+        state = false;
 
     }
+
     function createText() {
 
         p.textContent = '';
 
         checkTexts = textLists.split('').map(function(value) {
-            var span = document.createElement('span');
-            span.textContent = value;
-            p.appendChild(span);
 
-            return span;
+            const spanchar = document.createElement('spanchar');
+            spanchar.textContent = value;
+            p.appendChild(spanchar);
+
+            return spanchar;
         });
 
     }
-
 
         const scoreLabel=document.getElementById("score");
         const missLabel=document.getElementById("miss");
@@ -174,26 +377,29 @@
 
             score++;
             scoreLabel.textContent=score;
-
-
-
             checkTexts.shift();
-        }else{
-            if(!state)return;
+        }
+        else {
+            if (!state) return;
             checkTexts[0].className = 'add-red';
             var bool = event.shiftKey;
-            if(bool == true){
+            if (bool == true) {
 
-            }else if(bool == false){
-            miss++;
-            missLabel.textContent=miss;
+            } else if (bool == false) {
+                miss++;
+                missLabel.textContent = miss;
             }
-
         }
-            if(!checkTexts.length) createText();
-
+        if(checkTexts.length  == 0) {
+            alert('타자연습 종료\n결과창 출력')
+            alert('소요시간: '+ TIME + '초' + '\n' + '맞춘 문자 수: ' + score + '개' + '\n' + '틀린 문자 수 : ' + miss + '개' )
+            clearInterval(countdown);
+            state = false;
+        }
 
     });
+
+
 </script>
 
 

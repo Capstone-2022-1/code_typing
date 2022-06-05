@@ -1,89 +1,13 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<!--    <div style="padding:1rem; border: 1px solid #504DD2; float: left; width: 20%; height:290%;-->
-<!--                        border-radius: 2rem; margin: 2% 4% 0 7%;">-->
-<!--        <p style="text-align: center; margin-top: 20%; font-weight: bold;">내정보<br>-->
-<!--            {% if target_user.profile %} &lt;!&ndash; 프로필 존재할 때 이미지&ndash;&gt;-->
-<!--                <img src="{{ target_user.profile.m_emoticon.url }}" alt=""-->
-<!--                     style="height: 12rem; width: 12rem; border-radius: 20rem;-->
-<!--                             border: 3px solid black; margin-top: 20%">-->
-<!--            {% else %} &lt;!&ndash; 프로필 존재하지 않을 때 이미지 없이 빈 동그라미&ndash;&gt;-->
-<!--                <div style="text-align: center; margin-top: 20%;">-->
-<!--                    <p style="height: 12rem; width: 12rem; border-radius: 20rem; margin: 0 auto;-->
-<!--                             border: 3px solid black;"></p></div>-->
-<!--            {% endif %}-->
-<!--        </p>-->
-<!--        <div style="text-align: center; max-width: 300px; margin: 2rem auto;">-->
-<!--            {% if target_user.profile %}-->
-<!--                <h2 style="font-size: medium">-->
-<!--                    {{ target_user.profile.user }} &lt;!&ndash;내 아이디&ndash;&gt;-->
-<!--                    ({{ target_user.profile.user_nick }}) &lt;!&ndash; 닉네임 &ndash;&gt;-->
-<!--                    <br> mindu6424@naver.com &lt;!&ndash;나중에 이메일 db 들어 가야 함 지금은 보이는 것 때문에 임시로 넣어둠&ndash;&gt;-->
-<!--                    {% if target_user == user %} <br><br>-->
-<!--                        <a href="{% url 'profileapp:update' pk=target_user.profile.pk %}">-->
-<!--                            <p>-->
-<!--                                프로필 편집-->
-<!--                            </p>-->
-<!--                        </a>-->
-<!--                    {% endif %}-->
-<!--                </h2>-->
-<!--            {% else %}-->
-<!--                {% if target_user == user %}-->
-<!--                    <a href="{% url 'profileapp:create' %}">-->
-<!--                        <p>-->
-<!--                            프로필 생성-->
-<!--                        </p>-->
-<!--                    </a>-->
-<!--                {% else %}-->
-<!--                    <p>-->
-<!--                        닉네임 미설정-->
-<!--                    </p>-->
-<!--                {% endif %}-->
-<!--            {% endif %}-->
-<!--            {% if target_user == user %}-->
-<!--                <a href="{% url 'mainapp:update' pk=user.pk %}">-->
-<!--                    <p>-->
-<!--                        개인정보 변경-->
-<!--                    </p>-->
-<!--                </a>-->
-<!--                <a href="{% url 'mainapp:delete' pk=user.pk %}">-->
-<!--                    <p>-->
-<!--                        계정 삭제-->
-<!--                    </p>-->
-<!--                </a>-->
-<!--            {% endif %}-->
+<style>
+.korean{
+        font-family: 'Nanum Gothic Coding', monospace;
+    }
+</style>
 
-<!--        </div>-->
-<!--    </div>-->
-<!--    <div style="background-color:darkblue;height: 33rem; width: 60rem; border-radius: 1rem; margin-top: 5%; margin-left: 30%;">-->
-<!--        <p style="font-size: large; font-weight: bold">-->
-<!--            연습 기록-->
-<!--        </p>-->
-<!--        <div style="margin-top: 5%;">-->
-<!--            <div style="font-size: large">-->
-<!--                코드 선택 &nbsp;-->
-<!--                <select name="language" style="font-size: medium">-->
-<!--                    <option value="python" selected="selected">python</option>-->
-<!--                    <option value="html">html</option>-->
-<!--                    <option value="javascript">javascript</option>-->
-<!--                    <option value="css">css</option>-->
-<!--                </select>-->
-<!--            </div>-->
-<!--            <div style="border-top: 1.5px solid #504DD2;border-bottom: 1.5px solid #504DD2; margin-top: 20px;-->
-<!--                    margin-right: 2rem; text-align: center; padding-top: .5rem; padding-bottom: .5rem">-->
-<!--                <div style="display:inline-block; width: 5%;height: auto">번호</div>-->
-<!--                <div style="display:inline-block; width: 35%;">일시</div>-->
-<!--                <div style="display:inline-block; width: 18%;">속도</div>-->
-<!--                <div style="display:inline-block; width: 18%;">정확도</div>-->
-<!--                <div style="display:inline-block; width: 18%;">소요시간</div>-->
-<!--            </div>-->
-<!--            {% include 'snippets/list_category.html' with post_list=object_list %}-->
-<!--        </div>-->
-
-<!--    </div>-->
-
-<div style="height: 40rem; width: 100%; display: flex; justify-content: center; margin-top: 2rem">
+<div class="korean" style="height: 40rem; width: 100%; display: flex; justify-content: center; margin-top: 2rem">
     <div style="height: 100%; width: 80%">
         <div style="padding:1rem; border: 1px solid #504DD2;border-radius: 2rem; display: inline-block;height: 100%; width: 25%; margin-right:.5%;vertical-align: top ">
             <p style="text-align: center; margin-top: 20%; font-weight: bold;">내정보<br>
@@ -139,13 +63,13 @@
 
             </div>
         </div>
-        <div style="display: inline-block; height: 100%; width: 74%;">
-            <div style="height: 50%; width: 100%;padding: 1rem">
+        <div style="display: inline-block; height: 100%; width: 70%;">
+            <div style="height: 50%; width: 100%; padding: 1rem">
                 <p>나의 게시글</p>
                 <div style="display: block;height: 75%; width: 100%">
-                    <div style="text-align: center;margin-left: 2rem;margin-right: 2rem">
-                        <div style="border-bottom: 2px solid #504DD2;border-top: 2px solid #504DD2;text-align: center;padding-top: .3rem; padding-bottom: .3rem">
-                            <div style="display:inline-block; width: 5%;">
+                    <div style="text-align: center; margin-left: 2rem; margin-right: 2rem">
+                        <div style="border-bottom: 2px solid #504DD2; border-top: 2px solid #504DD2;text-align: center;padding-top: .3rem; padding-bottom: .3rem">
+                            <div style="display:inline-block; width: 6%;">
                                 번호
                             </div>
                             <div style="display:inline-block; width: 18%;">
@@ -165,7 +89,24 @@
             </div>
             <div style="height: 50%; width: 100%;padding: 1rem">
                 <p>나의 댓글</p>
-                <div style="display: block; background-color: chartreuse; height: 75%; width: 100%">
+                <div style="display: block; height: 75%; width: 100%">
+                    <div style="text-align: center; margin-left: 2rem; margin-right: 2rem">
+                        <div style="border-bottom: 2px solid #504DD2; border-top: 2px solid #504DD2;text-align: center;padding-top: .3rem; padding-bottom: .3rem">
+                            <div style="display:inline-block; width: 6%;">
+                                번호
+                            </div>
+                            <div style="display:inline-block; width: 18%;">
+                                게시판
+                            </div>
+                            <div style="display:inline-block; width: 35%;">
+                                게시글 제목
+                            </div>
+                            <div style="display:inline-block; width: 32%;">
+                                날짜
+                            </div>
+                        </div>
+                    {% include 'snippets/mypage_commentlist.html' with post_list=object_list %}
+                    </div>
                 </div>
                 {% include 'snippets/pagination.html' with page_obj=page_obj %}
             </div>
