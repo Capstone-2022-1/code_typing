@@ -59,35 +59,30 @@
                         계정 삭제
                     </p>
                 </a>
-                <a href="{% url 'mainapp:detail' pk=user.pk %}"
-                   style="text-decoration: none; color: gray; margin-top: 2%">
-                    <p>
-                        게시물 확인
-                    </p>
-                </a>
                 {% endif %}
 
             </div>
         </div>
         <div style="display: inline-block; height: 100%; width: 70%;">
             <div style="height: 100%; width: 100%; padding: 1rem">
-                <p>내가 업로드한 코드</p>
+                <p>나의 게시글</p>
                 <div style="display: block;height: 75%; width: 100%">
                     <div style="text-align: center; margin-left: 2rem; margin-right: 2rem">
                         <div style="border-bottom: 2px solid #504DD2; border-top: 2px solid #504DD2;text-align: center;padding-top: .3rem; padding-bottom: .3rem">
                             <div style="display:inline-block; width: 6%;">
                                 번호
                             </div>
-                            <div style="display:inline-block; width: 40%;">
-                                제목
+                            <div style="display:inline-block; width: 18%;">
+                                게시판
                             </div>
-                            <div style="display:inline-block; width: 13%;">
-                                문자수
+                            <div style="display:inline-block; width: 35%;">
+                                제목
                             </div>
                             <div style="display:inline-block; width: 32%;">
                                 날짜
                             </div>
                         </div>
+                    {% include 'snippets/mypage_postlist.html' with post_list=object_list %}
                     </div>
                 </div>
                 {% include 'snippets/pagination.html' with page_obj=page_obj %}

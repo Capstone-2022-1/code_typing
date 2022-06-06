@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path, include
 
-from upracticeapp.views import upractice_first, upractice_main, upractice_second
+from upracticeapp.views import upractice_main, upractice_first, upractice_second
 
 app_name = 'upracticeapp'
 

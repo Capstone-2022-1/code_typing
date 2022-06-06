@@ -2,7 +2,6 @@ from django.contrib.auth.models import User
 from django.db import models
 
 # Create your models here.
-from upracticeapp.models import Upractice
 
 
 class Language(models.Model):
