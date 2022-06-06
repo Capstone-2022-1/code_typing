@@ -22,9 +22,9 @@
     }
     </style>
 
-    <div style="text-align: center; max-width: 500px; margin: 4rem auto">
-      <div class="korean">
-          <h4>정말로 계정을 삭제 하시겠습니까 ?!</h4>
+    <div style="text-align: center; max-width: 500px; margin: 10% auto; margin-bottom: 20%; ">
+      <div class="korean" style="">
+          <h4>정말로 계정을 삭제 하시겠습니까 ?</h4>
       </div>
     <form action="{% url 'mainapp:delete' pk=target_user.pk %}" method="post">
         {% csrf_token %}

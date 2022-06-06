@@ -6,7 +6,7 @@
         <div style="display:inline-block; width: 5%;">
             {{ list.upractice_id }}
         </div>
-        <div style="display:inline-block; width: 51%; margin-left: 10%">
+        <div style="display:inline-block; width: 43%; margin-left: 5%">
             <a href="{% url 'upracticeapp:usecondpractice' upractice_id=list.upractice_id %}" style="text-decoration: none; color: black" method="post">
                 <div style="margin:0rem;padding: 0rem">
                     {% csrf_token %}
@@ -15,7 +15,10 @@
                 </div>
             </a>
         </div>
-        <div style="display:inline-block; width: 20%;">
+        <div style="display:inline-block; width: 20%;margin-left: 5%">
+            {{ list.writer }}
+        </div>
+        <div style="display:inline-block; width: 10%;margin-left: 5%">
             {{ list.upractice_chnum }}
         </div>
     </div>

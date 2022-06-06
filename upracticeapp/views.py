@@ -5,8 +5,9 @@ from django.shortcuts import render
 from django.views.generic import ListView
 from upracticeapp.models import Upractice
 
-def upractice_main(request):
-    uall = Upractice.objects.all() # main에서 들어오는 Upractice의 모든 값을 uall에 저장
+
+def upractice_main(request, pk):
+    uall = Upractice.objects.filter(writer=pk) # main에서 들어오는 Upractice의 모든 값을 uall에 저장
     context = {'uall': uall}
     return render(request, "upracticeapp/upractice_main.html", context)
 
@@ -23,6 +24,7 @@ def upractice_first(request):
             upractice_data.upractice_content = ucontent
             upractice_data.upractice_result = uresult
             upractice_data.upractice_chnum = len(ucontent)
+            upractice_data.writer = request.user
             upractice_data.save()
             print(upractice_data)
 

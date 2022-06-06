@@ -138,7 +138,13 @@
                     if(!state)return;
                     }, 1000);
                 function finish() {
-                    alert(TIME / 60 + '분 경과\n시간초과')
+                    Swal.fire({
+                      icon: 'error',
+                      title: 'Oops...',
+                      confirmButtonColor: '#504DD2',
+                      confirmButtonText: '확인',
+                      text: Math.round(TIME / 60) + '분 경과\n시간초과',
+                    })
                     clearInterval(countdown);
                     seikai.textContent = '점수' + score + '점';
                     state = false;
@@ -156,7 +162,7 @@
     var checkTexts = [];
 
     function cancel(){
-        location.href="{% url 'upracticeapp:mainupractice' %}"
+        location.href="{% url 'upracticeapp:mainupractice' pk=request.user.id %}"
     }
     function moveresult(){
         location.href="{% url 'practiceapp:result' %}"
@@ -181,6 +187,7 @@
         });
 
     }
+
         const scoreLabel=document.getElementById("score");
         const missLabel=document.getElementById("miss");
 
@@ -188,6 +195,7 @@
         let miss = 0;
 
         let state = true;
+
 
         window.addEventListener('keydown', e => {
         state = true;
@@ -214,36 +222,79 @@
 
         if(checkTexts.length  == 0) {
             clearInterval();
-            Swal.fire('타자연습 종료\n' +'\n' + '소요시간: ' + TIME + '초\n' + '맞춘 문자 수: ' + score + '개\n' + '틀린 문자 수: ' + miss + '개' ).
-                then((result) => {
-                  if (result.isConfirmed) {
-                      Swal.fire({
-                          title: title2,
-                          text: text2,
-                          icon: 'question',
-                          iconColor: '#504DD2',
+            Swal.fire({
+                title: title2,
+                text: text2,
+                icon: 'question',
+                iconColor: '#504DD2',
+                showCancelButton: true,
+                confirmButtonColor: '#504DD2',
+                cancelButtonColor: '#14128F',
+                confirmButtonText: '확인',
+                cancelButtonText: '취소'
+            }).then((result) => {
+                if (!result.isConfirmed) {
+                    Swal.fire({
+                          title: '나의코드 연습 다시 하시겠습니까?',
+                          showDenyButton: true,
                           showCancelButton: true,
+                          confirmButtonText: '네',
+                          denyButtonText: `아니오`,
+                          cancelButtonText: '아니오',
                           confirmButtonColor: '#504DD2',
                           cancelButtonColor: '#14128F',
-                          confirmButtonText: '확인',
-                          cancelButtonText: '취소'
                         }).then((result) => {
-                          if (!result.isConfirmed) {
+                          /* Read more about isConfirmed, isDenied below */
+                          if (result.isConfirmed) {
                               cancel();
-                          }
-                          else{
-                              moveresult();
+                          } else {
+                            home();
                           }
                         })
-                  }
-                  else{
-                  }
-                })
+                }
+                else{
+                    Swal.fire({
+                          title:  '타자연습 상세결과\n' +'\n' + '소요시간: ' + TIME + '초\n' + '맞은 문자 수: ' +
+                            score + '개\n' + '틀린 문자 수: ' + miss + '개\n' + '타자속도: ' + Math.round(((score / TIME) * 60)) +
+                            '\n정확도: ' + Math.round((((score / (score + miss)) * 100) * 100) / 100.0) + '%',
+                          confirmButtonColor: '#504DD2',
+                          showClass: {
+                            popup: 'animate__animated animate__fadeInDown'
+                          },
+                          hideClass: {
+                            popup: 'animate__animated animate__fadeOutUp'
+                          }
+                        })
+                        .then((result) => {
+                            if (result.isConfirmed){
+                                Swal.fire({
+                          title: '나의코드연습 다시 하시겠습니까?',
+                          showDenyButton: true,
+                          showCancelButton: true,
+                          confirmButtonText: '네',
+                          denyButtonText: `아니오`,
+                          cancelButtonText: '아니오',
+                          confirmButtonColor: '#504DD2',
+                          cancelButtonColor: '#14128F',
+                        }).then((result) => {
+                          /* Read more about isConfirmed, isDenied below */
+                          if (result.isConfirmed) {
+                              cancel();
+                          } else {
+                            home();
+                          }
+                        })
+                            }
+                        })
+                }
+            })
+
+
+
 
             state = false;
         }
+
     });
-
 </script>
-
 {% endblock %}

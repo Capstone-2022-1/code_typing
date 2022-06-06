@@ -11,6 +11,7 @@ from django.views.generic.list import MultipleObjectMixin
 from commentapp.models import Comment
 from mainapp.forms import AccountUpdateForm
 from postapp.models import Post
+from upracticeapp.models import Upractice
 
 
 def main_page(request):
@@ -31,7 +32,6 @@ class AccountDetailView(DetailView, MultipleObjectMixin):
     def get_context_data(self, **kwargs):
         object_list = Post.objects.filter(writer=self.get_object())
         return super(AccountDetailView, self).get_context_data(object_list=object_list, **kwargs)
-
 
 
 class AccountUpdateView(UpdateView):

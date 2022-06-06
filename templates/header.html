@@ -33,9 +33,15 @@
             <div style="display: inline-block; margin-right: 4rem;">
                 <a  class="div2"  style="text-decoration: none;" href="{% url 'practiceapp:firstpractice' %}">타자연습</a>
             </div>
+            {% if request.user.is_authenticated %}
             <div style="display: inline-block; margin-right: 4rem;">
-                <a  class="div2"  style="text-decoration: none;" href="{% url 'upracticeapp:mainupractice' %}">업로드코드</a>
+                <a  class="div2"  style="text-decoration: none;" href="{% url 'upracticeapp:mainupractice' pk=request.user.id %}">나의코드</a>
             </div>
+            {% else %}
+            <div style="display: inline-block; margin-right: 4rem; color: gray; letter-spacing: 2px;">
+                나의코드
+            </div>
+            {% endif %}
             <div style="display: inline-block; margin-right: 4rem;">
                 <a  class="div2"  style="text-decoration: none;" href="{% url 'gameapp:playgame' %}">타자게임</a>
             </div>
