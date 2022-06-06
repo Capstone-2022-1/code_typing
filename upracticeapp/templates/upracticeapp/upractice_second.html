@@ -94,7 +94,7 @@
             </div>
             <div style="height: 10%; width: 100%; text-align: end">
                 <div style="display: inline-block; height: 100%; width: 50%; text-align: end">
-                    <input type="submit" class="w-btn w-btn-ccc col-4 mt-4" value="목록으로">
+                    <input type="button" onclick="location.href=/upractice/"class="w-btn w-btn-ccc col-4 mt-4" value="목록으로">
                 </div>
             </div>
         </div>
@@ -103,57 +103,97 @@
 
 
 
-    <script type="text/javascript">
-
-        var p = document.getElementById('text');
-        const s = document.getElementById('test').innerText;
-        var textLists = s;
-        {#alert(textLists);#}
-
-        var checkTexts = [];
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script src="sweetalert2/dist/sweetalert2.min.js"></script>
+<link rel="stylesheet" href="sweetalert2.min.css">
+<link rel="stylesheet" href="@sweetalert2/theme-borderless/borderless.css">
 
 
-        createText();
+<script type="text/javascript">
 
-        const timer = document.getElementById('timer');
-        let TIME = 0;
-        const seikai = document.getElementById('seikai');
+    let timer = document.getElementById('timer');
+    var TIME = 0;
+    const seikai = document.getElementById('seikai');
 
+    const  title = '타자연습을 시작하겠습니까?'
+    const text = '확인버튼을 누르면 바로 시작됩니다!'
+    const title2 = '상세결과 창을 보시겠습니까?'
+    const text2 = '상세결과창을 통해 자세한 정보를 볼 수 있습니다.'
 
+    Swal.fire({
+  title: title,
+  text: text,
+  icon: 'question',
+  showCancelButton: true,
+  confirmButtonColor: '#504DD2',
+  cancelButtonColor: '#14128F',
+  confirmButtonText: '확인',
+  cancelButtonText: '취소'
+}).then((result) => {
+  if (!result.isConfirmed) {
+
+      cancel();
+  }
+  else{
         const countdown = setInterval(function () {
+                    timer.textContent = '소요시간：' + ++TIME + '초'
+                    if (TIME > 300) finish();
+                    if(!state)return;
+                    }, 1000);
+                function finish() {
+                    alert(TIME / 60 + '분 경과\n시간초과')
+                    clearInterval(countdown);
+                    seikai.textContent = '점수' + score + '점';
+                    state = false;
+                }
+  }
+})
 
 
-            timer.textContent = '소요시간：' + ++TIME + '초'
-            if (TIME <= 0) finish();
+   var p = document.getElementById('text');
+   const s = document.getElementById('test').innerText;
+   var textLists = s;
+   var len_textLists = s.length;
+    // {##}
+
+    var checkTexts = [];
+
+    function cancel(){
+        location.href="{% url 'upracticeapp:mainupractice' %}"
+    }
+    function moveresult(){
+        location.href="{% url 'practiceapp:result' %}"
+    }
+    function resultcancel(){
+        location.href="{% url 'practiceapp:second' %}"
+    }
 
 
-        }, 1000);
-
-        function finish() {
-            clearInterval(countdown);
-
-            seikai.textContent = '소요시간' + score + '초';
-            state = false;
-
-        }
-
-        function createText() {
-
-            p.textContent = '';
-
-            checkTexts = textLists.split('').map(function (value) {
-                var span = document.createElement('span');
-                span.textContent = value;
-                p.appendChild(span);
-
-                return span;
-            });
-
-        }
+    createText();
 
 
-        const scoreLabel = document.getElementById("score");
-        const missLabel = document.getElementById("miss");
+
+
+
+
+
+    function createText() {
+
+        p.textContent = '';
+
+        checkTexts = textLists.split('').map(function(value) {
+
+            const spanchar = document.createElement('spanchar');
+            spanchar.textContent = value;
+            p.appendChild(spanchar);
+
+            return spanchar;
+        });
+
+    }
+
+        const scoreLabel=document.getElementById("score");
+        const missLabel=document.getElementById("miss");
 
         let score = 0;
         let miss = 0;
@@ -162,33 +202,63 @@
 
 
         window.addEventListener('keydown', e => {
-            if (e.key === checkTexts[0].textContent) {
-                if (!state) return;
-                console.log("score");
-                checkTexts[0].className = 'add-green';
+        state = true;
+        if(e.key === checkTexts[0].textContent) {
+            if(!state)return;
+            console.log("score");
+            checkTexts[0].className = 'add-green';
 
-                score++;
-                scoreLabel.textContent = score;
+            score++;
+            scoreLabel.textContent=score;
+            checkTexts.shift();
+        }
+        else {
+            if (!state) return;
+            checkTexts[0].className = 'add-red';
+            var bool = event.shiftKey;
+            if (bool == true) {
 
-
-                checkTexts.shift();
-            } else {
-                if (!state) return;
-                checkTexts[0].className = 'add-red';
-                var bool = event.shiftKey;
-                if (bool == true) {
-
-                } else if (bool == false) {
-                    miss++;
-                    missLabel.textContent = miss;
-                }
-
+            } else if (bool == false) {
+                miss++;
+                missLabel.textContent = miss;
             }
-            if (!checkTexts.length) createText();
+        }
+
+        if(checkTexts.length  == 0) {
+            clearInterval();
+            Swal.fire('타자연습 종료\n' +'\n' + '소요시간: ' + TIME + '초\n' + '맞춘 문자 수: ' + score + '개\n' + '틀린 문자 수: ' + miss + '개' ).
+                then((result) => {
+                  if (result.isConfirmed) {
+                      Swal.fire({
+                          title: title2,
+                          text: text2,
+                          icon: 'question',
+                          iconColor: '#504DD2',
+                          showCancelButton: true,
+                          confirmButtonColor: '#504DD2',
+                          cancelButtonColor: '#14128F',
+                          confirmButtonText: '확인',
+                          cancelButtonText: '취소'
+                        }).then((result) => {
+                          if (!result.isConfirmed) {
+                              cancel();
+                          }
+                          else{
+                              moveresult();
+                          }
+                        })
+                  }
+                  else{
+                  }
+                })
 
 
-        });
-    </script>
 
+            state = false;
+        }
+
+    });
+
+</script>
 
 {% endblock %}
