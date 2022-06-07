@@ -1,5 +1,9 @@
-
-<div>
+<style>
+    .korean{
+        font-family: 'Nanum Gothic Coding', monospace;
+    }
+</style>
+<div class="korean">
     {% if post_list %}
     <div style="text-align: center;margin-left: 2rem;margin-right: 2rem">
     {% for list in post_list %}
@@ -31,7 +35,7 @@
     {% endfor %}
     </div>
     {% else %}
-    <div>
+    <div class="korean">
         <h4>게시글이 없습니다.</h4>
     </div>
     {% endif %}

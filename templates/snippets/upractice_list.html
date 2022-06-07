@@ -1,6 +1,12 @@
+<style>
+.korean{
+        font-family: 'Nanum Gothic Coding', monospace;
+}
+</style>
+
 <div>
     {% if uall %}
-    <div style="text-align: center;margin-left: 2rem;margin-right: 2rem">
+    <div style="text-align: center;margin-left: 2rem;margin-right: 2rem" class="korean">
     {% for list in uall %}
         <div style="border-bottom: 1px solid #504DD2;text-align: center;padding-top: .3rem; padding-bottom: .3rem">
         <div style="display:inline-block; width: 5%;">
@@ -25,7 +31,7 @@
     {% endfor %}
     </div>
     {% else %}
-    <div style="text-align: center;margin-top: 2rem">
+    <div class="korean" style="text-align: center;margin-top: 2rem">
         <h4>게시글이 없습니다.</h4>
     </div>
     {% endif %}

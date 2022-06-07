@@ -1,47 +1,118 @@
-<style>
-    .korean{
-        font-family: 'Nanum Gothic Coding', monospace;
-    }
-</style>
 {% extends 'base.html' %}
 
 
 {% block content %}
+    <style>
+        .korean {
+            font-family: 'Nanum Gothic Coding', monospace;
+        }
+
+        .text {
+            display: inline;
+            vertical-align: middle;
+            border-right: .05em solid black;
+            animation: cursor 0.2s ease infinite;
+        }
+
+        .box {
+            animation: up-down 1s infinite ease-in-out alternate;
+        }
+
+        @keyframes up-down {
+            from {
+                transform: translatey(0px);
+            }
+            to {
+                transform: translatey(-20px);
+            }
+        }
+
+        .box1 {
+            animation: down-up 1s infinite ease-in-out alternate;
+        }
+
+        @keyframes down-up {
+            from {
+                transform: translatey(-20px);
+            }
+            to {
+                transform: translatey(0px);
+            }
+        }
+    </style>
+
+    <!--배너 넘기는 것 주석 처리-->
+    {#<div style="display: inline-block; height: 15rem; width: 50%; margin-top: 10%; margin-bottom: 10%; vertical-align: top;">#}
+    {#    <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">#}
+    {#  <div class="carousel-inner">#}
+    {#    <div class="carousel-item active" data-bs-interval="2000">#}
+    {#      <img src="static/main_img/eng1.png" class="d-block w-100" alt="" height="100%" width="100%">#}
+    {#    </div>#}
+    {#    <div class="carousel-item" data-bs-interval="2000">#}
+    {#      <img src="static/main_img/kor3.png" class="d-block w-100" alt="" height="90%" width="90%">#}
+    {#    </div>#}
+    {#  </div>#}
+    {#</div>#}
+    {#</div>#}
 
 
-<div style="height: 35rem; width: 100%; margin-top: 2%">
-    <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
-  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
-    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="3" aria-label="Slide 4"></button>
-  </div>
-  <div class="carousel-inner">
-    <div class="carousel-item active" data-bs-interval="3000">
-      <img src="static/main_img/mainp1.png" class="d-block w-100" alt="" height="100%" width="100%">
+    <div style="height: 30rem; width: 100%; display: flex; justify-content: center;">
+        <div style="height: 60%; width: 50%;">
+            <div class="korean"
+                 style="margin-top: 10%; text-align: center; font-size: xx-large; color: #504DD2; font-family: 'Cabin', sans-serif;">
+                <span style="font-weight: bold; color:#14128F">C</span>oding <span
+                    style="font-weight: bold; color:#14128F">O</span>f
+                <span style="font-weight: bold; color:#14128F">DE</span>veloper'<span
+                    style="font-weight: bold; color:#14128F">S</span>
+
+            </div>
+            <div class="intro"
+                 style="text-align: center; height: 50%; width:100%; padding-top: 1rem; font-size: x-large">
+                <pre class="text korean"></pre>
+            </div>
+            <div style="height: 50%; width:100%; text-align: center;">
+                <div class="box"
+                     style=" display: inline-block; height: 10rem; width: 15%; margin-top: 7%; margin-bottom: 10%;">
+                    <img src="static/main_img/kimminsu.png" class="d-block w-100" alt="" height="90%" width="90%">
+                </div>
+                <div class="box1"
+                     style=" display: inline-block; height: 10rem; width: 15%; margin-top: 7%; margin-bottom: 10%;">
+                    <img src="static/main_img/kanghyejin.png" class="d-block w-100" alt="" height="90%" width="90%">
+                </div>
+                <div class="box"
+                     style=" display: inline-block; height: 10rem; width: 15%; margin-top: 7%; margin-bottom: 10%;">
+                    <img src="static/main_img/kimhyejin.png" class="d-block w-100" alt="" height="90%" width="90%">
+                </div>
+                <div class="box1"
+                     style=" display: inline-block; height: 10rem; width: 15%; margin-top: 7%; margin-bottom: 10%;">
+                    <img src="static/main_img/oh.png" class="d-block w-100" alt="" height="90%" width="90%">
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="carousel-item" data-bs-interval="3000">
-      <img src="static/main_img/mainp2.png" class="d-block w-100" alt="" height="100%" width="100%">
-    </div>
-    <div class="carousel-item" data-bs-interval="3000">
-      <img src="static/main_img/mainp3.png" class="d-block w-100" alt="" height="100%" width="100%">
-    </div>
-      <div class="carousel-item" data-bs-interval="3000">
-      <img src="static/main_img/mainp4.png" class="d-block w-100" alt="" height="100%" width="100%">
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
-</div>
 
 
+    <script type="text/javascript">
+        "use strict";
+        const content = "개발자의 코딩, Codes에 오신 것을 환영합니다. \n 개발자를 위해 만들어진 코딩 타자 연습 웹 사이트 입니다."
+        const text = document.querySelector(".text")
+        let index = 0;
+
+        function sleep(delay) {
+            const start = new Date().getTime();
+            while (new Date().getTime() < start + delay) ;
+        }
+
+        function typing() {
+            text.textContent += content[index++];
+            if (index > content.length) {
+                text.textContent = ""
+                index = 0;
+                sleep(3000);
+            }
+        }
+
+        setInterval(typing, 100)
+    </script>
 
 {% endblock %}
