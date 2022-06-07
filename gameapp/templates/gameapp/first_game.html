@@ -48,9 +48,17 @@
 <script type="text/javascript">
 
 
-var taja = ["print", "for", "while", "elif", "else", "if", "self", "get", "return", "try",
-    "except", "def", "super", "sum", "add", "max", "type", "str", "int", "float", "True", "False"
-];
+var taja = ["print", "for", "while", "elif", "else", "if", "self", "get", "return", "try"];
+function syncDelay(milliseconds){
+ var start = new Date().getTime();
+ var end=0;
+ while( (end-start) < milliseconds){
+     end = new Date().getTime();
+ }
+
+}
+
+
 
 
 var tajaContents = document.getElementById("tajaContents");
@@ -127,7 +135,6 @@ function drawTaja() {
     }, DRAWTIME);
 }
 
-
 function downTaja() {
     setInterval(function () {
         for (let i = 0; i < taja.length; i++) {
@@ -144,22 +151,30 @@ function downTaja() {
 
                         if (life === 0) {
                             Swal.fire({
-                                  title: 'GAME OVER!!',
-
+                                  position: 'center',
+                                  icon: 'error',
+                                  title: 'GAVE OVER!!.\n' + '\n' + '총' + score + '점을 획득하였습니다.',
+                                  showConfirmButton: true,
+                                  // timer: 5000
                                 }).then((result) => {
-
-                                alert('총 ' + score + '점을 획득하였습니다.');
-
-
-                               location.reload();})
+                            if (result.isConfirmed){
+                                location.reload();
+                            }
+                        })
                         }
 
 
                         if (newObj.length === taja.length) {
                             if (!tajaContents.hasChildNodes()) {
-                                alert('게임이 끝났습니다.');
-                                alert('총 ' + score + '점을 획득하였습니다.');
+                                Swal.fire({
+                                  title: '게임이 끝났습니다.\n' + '\n' + '총' + score + '점을 획득하였습니다.',
+
+                                }).then((result) => {
+                            if (result.isConfirmed){
                                 location.reload();
+                                }
+                                })
+
                             }
                         }
 
@@ -187,13 +202,16 @@ tajaText.addEventListener("keydown", function (e) {
 
                 if (newObj.length === taja.length) {
                     if (!tajaContents.hasChildNodes()) {
-                        alert('다음 단계로 이동합니다.(준비중)');
-                        alert('총 ' + score + '점을 획득하였습니다.');
-                        location.reload();
+                        Swal.fire({
+                                  title: '게임이 끝났습니다.\n' + '\n' + '총' + score + '점을 획득하였습니다.',
+
+                                }).then((result) => {
+                            if (result.isConfirmed){
+                                location.reload();
+                                }
+                                })
                     }
-
                 }
-
             }
         }
 
