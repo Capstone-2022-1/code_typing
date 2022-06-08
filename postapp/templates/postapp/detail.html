@@ -48,13 +48,13 @@
                     <img src="{{ target_post.image.url }}" width="auto" height="100%" alt="" style="object-fit: cover;">
                 </div>
             </div>
-            <p>
+            <p style="padding: 1rem">
                 {{ target_post.post_content }}
             </p>
         </div>
 
 
-        <div style="height: auto;width: 100%; padding-bottom: 3rem;">
+        <div style="height: auto;width: 100%; padding-bottom: 3rem; margin-top: 1rem;">
 
         {% include 'commentapp/create.html' with post=target_post %}
             <div style="height: auto;width: 100%; padding: .5rem 3rem .5rem 3rem;">

@@ -5,11 +5,11 @@
 .korean{
         font-family: 'Nanum Gothic Coding', monospace;
     }
-.div2 {
+.div3 {
         text-decoration: none;
         color: black;
     }
-.div2 :hover{
+.div3 :hover{
         background-color: white;
         transition: .5s;
         color: #504DD2;
@@ -17,10 +17,10 @@
     }
 </style>
 
-<div class="korean" style="height: 40rem; width: 100%; display: flex; justify-content: center; margin-top: 4%;">
-    <div style="height: 95%; width: 80%">
-        <div style="padding:1rem; border: 1px solid #504DD2;border-radius: 2rem; display: inline-block;height: 100%; width: 25%; margin-right:.5%;vertical-align: top ">
-            <p class="korean" style="text-align: center; margin-top: 17%; font-size: large">내정보<br>
+<div class="korean" style="height: 36rem; width: 100%; display: flex; justify-content: center; margin-top: 4%; padding-left: 4%;">
+    <div style="height: 100%; width: 80%">
+        <div style="padding:1rem; border: 1px solid #504DD2;border-radius: 2rem; display: inline-block;height: 100%; width: 24%; margin-right:.5%;vertical-align: top ">
+            <p class="korean" style="text-align: center; margin-top: 10%; font-size: large">내정보<br>
                 {% if target_user.profile %} <!-- 프로필 존재할 때 이미지-->
                 <img src="{{ target_user.profile.m_emoticon.url }}" alt=""
                      style="height: 12rem; width: 12rem; border-radius: 20rem;
@@ -40,7 +40,7 @@
                     {% if target_user == user %} <br><br>
                     <a href="{% url 'profileapp:update' pk=target_user.profile.pk %}"
                         style="text-decoration: none;"
-                        class="div2">
+                        class="div3">
                         <p>
                             프로필 편집
                         </p>
@@ -51,7 +51,7 @@
                 {% if target_user == user %}
                 <a href="{% url 'profileapp:create' %}"
                     style="text-decoration: none;"
-                    class="div2">
+                    class="div3">
                     <p>
                         프로필 생성
                     </p>
@@ -65,14 +65,14 @@
                 {% if target_user == user %}
                 <a href="{% url 'mainapp:update' pk=user.pk %}"
                     style="text-decoration: none;"
-                    class="div2">
+                    class="div3">
                     <p>
                         개인정보 변경
                     </p>
                 </a>
                 <a href="{% url 'mainapp:delete' pk=user.pk %}"
                     style="text-decoration: none; color: red;"
-                    class="div2">
+                    class="div3">
                     <p>
                         계정 삭제
                     </p>

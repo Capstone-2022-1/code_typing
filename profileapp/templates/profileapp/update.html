@@ -24,28 +24,28 @@
 }
 </style>
 
-    <div class="korean" style="margin-top: 4%; display: inline-block; width: 1200px; background-color: white; text-align: center; margin-left: 10rem">  <!-- 전체 div로 묶기 -->
+    <div class="korean" style="margin-top: 4%; display: inline-block; width: 1200px; background-color: white; text-align: center; margin-left: 15rem">  <!-- 전체 div로 묶기 -->
         <div style="display: inline-block; width: 27%; border: 1px solid #504DD2; border-radius: 2rem;
-                    height: 600px; background-color: white; vertical-align: top;"><!-- 왼쪽 프로필 div 영역 -->
-            <p style="text-align: center; margin-top: 35%; font-weight: bold; ">내정보<br>
+                    height: 580px; background-color: white; vertical-align: top;"><!-- 왼쪽 프로필 div 영역 -->
+            <p class="korean" style="text-align: center; margin-top: 35%; font-size: large; ">내정보<br>
                 {% if target_profile %}
                 <img src="{{ target_profile.m_emoticon.url }}" alt=""
                      style="height: 12rem; width: 12rem; border-radius: 20rem;
-                             border: 3px solid black; margin-top: 20%;">
+                             border: 3px solid black; margin-top: 13%; margin-bottom: 10%">
                 {% endif %}
             </p>
         <div style="text-align: center; max-width: 300px; margin-bottom: 50%">
                 <h2 style="font-size: medium;">
                     {{ target_profile.user }} <!--내 아이디-->
                     ({{ target_profile.user_nick }}) <!-- 닉네임 -->
-                    <br> mindu6424@naver.com <!--나중에 이메일 db 들어 가야 함 지금은 보이는 것 때문에 임시로 넣어둠-->
+                    <br> admin0610@admin.com <!--나중에 이메일 db 들어 가야 함 지금은 보이는 것 때문에 임시로 넣어둠-->
             </h2>
         </div>
 
         </div>
 
 <div class="korean" style="margin-left: 2%; display: inline-block; text-align: center; width: 830px; background-color: white;
-    border: 1px solid #504DD2; border-radius: 2rem; height: 600px"><!-- 오른쪽 수정 div 영역 -->
+    border: 1px solid #504DD2; border-radius: 2rem; height: 580px"><!-- 오른쪽 수정 div 영역 -->
     <div style="text-align: center; max-width: 500px; margin: 4rem auto">
       <div class="mb-4">
           <h4>프로필 편집</h4>
