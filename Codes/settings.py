@@ -44,12 +44,10 @@ INSTALLED_APPS = [
     'boardapp',
     'commentapp',
     'gameapp',
-    'imageapp',
     'mainapp',
     'postapp',
     'practiceapp',
     'profileapp',
-    'recommentapp',
     'upracticeapp',
     'bootstrap4'
 ]
