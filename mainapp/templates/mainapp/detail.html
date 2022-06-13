@@ -36,7 +36,7 @@
                 <h2 style="font-size: medium">
                     {{ target_user.profile.user }} <!--내 아이디-->
                     ({{ target_user.profile.user_nick }}) <!-- 닉네임 -->
-                    <br> mindu6424@naver.com <!--나중에 이메일 db 들어 가야 함 지금은 보이는 것 때문에 임시로 넣어둠--></h2>
+                    <br> codes0@codes.com <!--나중에 이메일 db 들어 가야 함 지금은 보이는 것 때문에 임시로 넣어둠--></h2>
                     {% if target_user == user %} <br><br>
                     <a href="{% url 'profileapp:update' pk=target_user.profile.pk %}"
                         style="text-decoration: none;"

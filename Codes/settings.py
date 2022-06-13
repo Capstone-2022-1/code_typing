@@ -40,16 +40,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'accountapp',
     'boardapp',
     'commentapp',
     'gameapp',
-    'imageapp',
     'mainapp',
     'postapp',
     'practiceapp',
     'profileapp',
-    'recommentapp',
     'upracticeapp',
     'bootstrap4'
 ]
