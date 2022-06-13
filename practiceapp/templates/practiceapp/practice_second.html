@@ -80,7 +80,7 @@
             </div>
             <div id="test" style="color: white; font-size: xx-small" >{{p.code_content}}</div>
             <div style="height: 26rem; width: 100%; border: 1px solid #504DD2; overflow-y: scroll;padding: 3px">
-                <div id="text" style="font-size: 20px; text-align: left;" class="korean"></div>
+                <pre id="text" style="font-size: 20px; text-align: left;" class="korean"></pre>
             </div>
             <div style="width: 100%; border: 1px solid #504DD2;">
                 <div style="font-size: 20px;" class="korean">
@@ -160,7 +160,7 @@
 
 
    var p = document.getElementById('text');
-   const s = document.getElementById('test').innerText;
+   const s = document.getElementById('test').innerHTML;
    var textLists = s;
    var len_textLists = s.length;
     // {##}
