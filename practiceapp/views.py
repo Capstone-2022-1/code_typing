@@ -6,6 +6,8 @@ from django.core import serializers
 from django.shortcuts import render
 
 # Create your views here.
+from django.urls import resolve
+
 from practiceapp.models import Language, Practice
 
 
@@ -105,5 +107,7 @@ def practice_second(request):
 
 
 
-def practice_result(request):
+def result(request):
+    a = request.get_full_path
+    print("실행", a)
     return render(request, 'practiceapp/practice_result.html')
