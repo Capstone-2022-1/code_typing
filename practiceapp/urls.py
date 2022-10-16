@@ -9,6 +9,6 @@ urlpatterns = [
     path('', practice_first, name='firstpractice'),
     path('create/', practice_create, name='create'),
     path('second/', practice_second, name='second'),
-    path('result', result, name='result'),
+    path('second/result', result, name='result'),
 
 ]

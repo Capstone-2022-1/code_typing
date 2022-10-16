@@ -108,6 +108,5 @@ def practice_second(request):
 
 
 def result(request):
-    a = request.get_full_path
-    print("실행", a)
+    print("이까지 실행가능")
     return render(request, 'practiceapp/practice_result.html')
