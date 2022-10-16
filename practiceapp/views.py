@@ -109,4 +109,9 @@ def practice_second(request):
 
 def result(request):
     print("이까지 실행가능")
+    time = request.GET.get('TIME')
+    score = request.GET.get('score')
+    miss = request.GET.get('miss')
+    print("시간",time,"스코어",score,"미스",miss)
     return render(request, 'practiceapp/practice_result.html')
+

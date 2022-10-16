@@ -179,20 +179,18 @@
     }
 
     function moveresult(sendData) {
-        alert(sendData)
-        alert(typeof(sendData))
+        // alert(sendData)
+        // alert(typeof(sendData))
         // location.href="{% url 'practiceapp:result' %}" + '?TIME=' + TIME + '&score=' + score + '&miss=' + miss
         jQuery.ajax({
             url: "result",
             type: "GET",
-            data: sendData ,
+            data: sendData,
             dataType: "json",
-            success: function (data){
-                alert("성공!!!!")
+            success: function (){
                 location.href = "{% url 'practiceapp:result' %}"
             },
             error: function (){
-                console.log("실패")
             }
         });
         // location.href = "{% url 'practiceapp:result' %}"
@@ -304,7 +302,7 @@
                     jsonData.miss = miss;
 
                     // 위에서 만든 json format을 문자열화
-                    var sendData = JSON.stringify(jsonData);
+                    var sendData = jsonData;
                     moveresult(sendData)
 
                         // moveresult(TIME,score,miss);
