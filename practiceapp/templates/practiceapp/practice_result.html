@@ -1,1 +1,100 @@
-<div>{{ request.get_full_path }}</div>
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+.korean{
+        font-family: 'Nanum Gothic Coding', monospace;
+    }
+.div3 {
+        text-decoration: none;
+        color: black;
+    }
+.div3 :hover{
+        background-color: white;
+        transition: .5s;
+        color: #504DD2;
+        border-radius: 5px;
+    }
+</style>
+
+<div class="korean" style="height: 36rem; width: 100%; display: flex; justify-content: center; margin-top: 4%; padding-left: 4%;">
+    <div style="height: 100%; width: 80%">
+        <div style="padding:1rem; border: 1px solid #504DD2;border-radius: 2rem; display: inline-block;height: 100%; width: 24%; margin-right:.5%;vertical-align: top">
+            <p class="korean" style="text-align: center; margin-top: 10%; font-size: large">내정보<br>
+                {% if target_user.profile %} <!-- 프로필 존재할 때 이미지-->
+                <img src="{{ target_user.profile.m_emoticon.url }}" alt=""
+                     style="height: 12rem; width: 12rem; border-radius: 20rem;
+                             border: 3px solid black; margin-top: 20%">
+                {% else %} <!-- 프로필 존재하지 않을 때 이미지 없이 빈 동그라미-->
+            <div style="text-align: center; margin-top: 20%;">
+                <p style="height: 12rem; width: 12rem; border-radius: 20rem; margin: 0 auto;
+                             border: 3px solid black;"></p></div>
+            {% endif %}
+            </p>
+            <div style="text-align: center; height: 40%;">
+                {% if user %}
+                <h2 style="font-size: medium">
+                    {{ user }} 님 <br> 연습결과 <!--내 아이디-->
+                    {{ target_user.profile.user_nick }} <!-- 닉네임 -->
+<!--                    <br> codes0@codes.com &lt;!&ndash;나중에 이메일 db 들어 가야 함 지금은 보이는 것 때문에 임시로 넣어둠&ndash;&gt;</h2>-->
+                    {% if target_user == user %} <br><br>
+                    <a href="{% url 'profileapp:update' pk=target_user.profile.pk %}"
+                        style="text-decoration: none;"
+                        class="div3">
+                        <p>
+                            프로필 편집
+                        </p>
+                    </a>
+                    {% endif %}
+                </h2>
+                {% else %}
+                {% if target_user == user %}
+                <a href="{% url 'profileapp:create' %}"
+                    style="text-decoration: none;"
+                    class="div3">
+                    <p>
+                        프로필 생성
+                    </p>
+                </a>
+                {% else %}
+                <p style="text-decoration: none;">
+                    닉네임 미설정
+                </p>
+                {% endif %}
+                {% endif %}
+                {% if target_user == user %}
+                <a href="{% url 'mainapp:update' pk=user.pk %}"
+                    style="text-decoration: none;"
+                    class="div3">
+                    <p>
+                        개인정보 변경
+                    </p>
+                </a>
+                <a href="{% url 'mainapp:delete' pk=user.pk %}"
+                    style="text-decoration: none; color: red;"
+                    class="div3">
+                    <p>
+                        계정 삭제
+                    </p>
+                </a>
+                {% endif %}
+
+            </div>
+        </div>
+        <div style="padding:1rem; border: 1px solid #504DD2;border-radius: 2rem; display: inline-block;height: 100%; width: 70%; margin-right:.5%;vertical-align: top">
+            <div style="height: 47%; width: 100%;">
+                <p>사용자명 : {{ user }}</p>
+                <p>시간 : {{ TIME }}</p>
+                <p>스코어 : {{ score }}</p>
+                <p>미스 : {{ miss }}</p>
+            </div>
+            <hr style="background-color: #504DD2; height:.1rem; border:0px">
+            <div style="height: 33%; width: 100%;"></div>
+            <hr style="background-color: #504DD2; height:.1rem; border:0px">
+            <div style="height: 16%; width: 100%;"></div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

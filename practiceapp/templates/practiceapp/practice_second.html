@@ -117,9 +117,14 @@
 </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-<script src="sweetalert2/dist/sweetalert2.min.js"></script>
-<link rel="stylesheet" href="sweetalert2.min.css">
-<link rel="stylesheet" href="@sweetalert2/theme-borderless/borderless.css">
+<!--<script src="sweetalert2/dist/sweetalert2.min.js"></script>-->
+<!--<link rel="stylesheet" href="sweetalert2.min.css">-->
+<!--<link rel="stylesheet" href="@sweetalert2/theme-borderless/borderless.css">-->
+<script>
+  $.ajaxSetup({
+    headers: { "X-CSRFToken": '{{csrf_token}}' }
+  });
+</script>
 <script type="text/javascript">
     let timer = document.getElementById('timer');
     var TIME = 0;
@@ -178,21 +183,20 @@
         location.href = "{% url 'practiceapp:firstpractice' %}"
     }
 
-    function moveresult(sendData) {
-        // alert(sendData)
-        // alert(typeof(sendData))
-        // location.href="{% url 'practiceapp:result' %}" + '?TIME=' + TIME + '&score=' + score + '&miss=' + miss
-        jQuery.ajax({
-            url: "result",
-            type: "GET",
-            data: sendData,
-            dataType: "json",
-            success: function (){
-                location.href = "{% url 'practiceapp:result' %}"
-            },
-            error: function (){
-            }
-        });
+    function moveresult(TIME,score,miss) {
+         location.href="{% url 'practiceapp:result' %}" + "?TIME=" + TIME + "&score=" + score + "&miss=" +miss
+        // jQuery.ajax({
+        //     url: "result",
+        //     type: "GET",
+        //     data: sendData,
+        //     dataType: "json",
+        //     success: function (){
+        //         location.href = "/practice/second/result?"+"TIME="+TIME+"&score="+score+"&miss="+miss
+        //     },
+        //     error: function (){
+        //     }
+        // });
+        // data = {'TIME':TIME, 'score':score, 'miss':miss}
         // location.href = "{% url 'practiceapp:result' %}"
     }
 
@@ -296,16 +300,18 @@
                         }
                     })
                 } else {
-                    var jsonData = new Object();
-                    jsonData.TIME = TIME;
-                    jsonData.score = score;
-                    jsonData.miss = miss;
+                    // var jsonData = new Object();
+                    // jsonData.TIME = TIME;
+                    // jsonData.score = score;
+                    // jsonData.miss = miss;
+                    //
+                    // // 위에서 만든 json format을 문자열화
+                    // var sendData = jsonData;
+                    // // var sendData = JSON.stringify(jsonData);
+                    // moveresult(sendData)
 
-                    // 위에서 만든 json format을 문자열화
-                    var sendData = jsonData;
-                    moveresult(sendData)
 
-                        // moveresult(TIME,score,miss);
+                    moveresult(TIME,score,miss)
 
                         // Swal.fire({
                         //     title: '타자연습 상세결과\n' + '\n' + '소요시간: ' + TIME + '초\n' + '맞은 문자 수: ' +

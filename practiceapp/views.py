@@ -3,6 +3,7 @@ import json
 from urllib import parse
 
 from django.core import serializers
+from django.http import JsonResponse
 from django.shortcuts import render
 
 # Create your views here.
@@ -108,10 +109,21 @@ def practice_second(request):
 
 
 def result(request):
-    print("이까지 실행가능")
-    time = request.GET.get('TIME')
+    print("result 실행")
+    user = request.user
+    TIME = request.GET.get('TIME')
     score = request.GET.get('score')
     miss = request.GET.get('miss')
-    print("시간",time,"스코어",score,"미스",miss)
-    return render(request, 'practiceapp/practice_result.html')
+    print(TIME,score,miss,user)
+    context = {'TIME': TIME, 'score': score, 'miss':miss, 'user':user}
+    return render(request, 'practiceapp/practice_result.html', context)
+
+    # time = request.GET.get('TIME')
+    # score = request.GET.get('score')
+    # miss = request.GET.get('miss')
+    # print("시간",time,"스코어",score,"미스",miss)
+    # sendData = request.GET.get('TIME')
+    # print(sendData)
+    # return JsonResponse(data={})
+    # return render(request, 'practiceapp/practice_result.html')
 
