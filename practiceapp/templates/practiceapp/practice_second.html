@@ -96,10 +96,10 @@
                      </span>
                     <span style="text-align: center; float: right; margin-right: 1rem">
                          <span> Miss score: </span> <span id="miss">0</span>
-                     </span>
+                    </span>
                     <span style="text-align: center; margin-left: 27rem">
-                    <span style="margin-left: 4%" id="timer"></span>
-                    <span id="seikai"></span>
+                        <span style="margin-left: 4%" id="timer"></span>
+                        <span id="seikai"></span>
                     </span>
                 </div>
             </div>
@@ -107,10 +107,9 @@
         <div style="height: 10%; width: 100%;">
             <div style="display: inline-block; height: 100%; width: 49.5%;vertical-align: top" class="korean">
                 출처 : {{ p.code_source }}
+                <span style="color: white" id="pnum">{{ p.practice_id }}</span>
             </div>
-            <!--                <div id="complete" style="display: inline-block; height: 100%; width: 50%; text-align: end">-->
-            <!--                    <a  href="{% url 'practiceapp:result' %}" type="submit" class="w-btn w-btn-ccc col-4 mt-4"  value="완료"></a>-->
-            <!--                </div>-->
+
         </div>
     </div>
     {% endfor %}
@@ -129,6 +128,7 @@
     let timer = document.getElementById('timer');
     var TIME = 0;
     const seikai = document.getElementById('seikai');
+    // const practice_num = document.getElementById('practice_num');
 
     const title = '타자연습을 시작하겠습니까?'
     const text = '확인버튼을 누르면 바로 시작됩니다!'
@@ -178,13 +178,14 @@
     var len_textLists = s.length;
     // {##}
     var checkTexts = [];
+    const pnum = document.getElementById('pnum').innerHTML;
 
     function cancel() {
         location.href = "{% url 'practiceapp:firstpractice' %}"
     }
 
-    function moveresult(TIME,score,miss) {
-         location.href="{% url 'practiceapp:result' %}" + "?TIME=" + TIME + "&score=" + score + "&miss=" +miss
+    function moveresult(pnum,TIME,score,miss) {
+         location.href="{% url 'practiceapp:result' %}" + "?pnum=" + pnum + "&TIME=" + TIME + "&score=" + score + "&miss=" + miss
         // jQuery.ajax({
         //     url: "result",
         //     type: "GET",
@@ -249,6 +250,7 @@
             checkTexts.shift();
         } else if (e.keyCode === 13) {
             checkTexts[0].className = 'add-next';
+            score=score+2;
             checkTexts.shift();
         } else if (e.keyCode == "9") {
             e.preventDefault()
@@ -311,7 +313,7 @@
                     // moveresult(sendData)
 
 
-                    moveresult(TIME,score,miss)
+                    moveresult(pnum,TIME,score,miss)
 
                         // Swal.fire({
                         //     title: '타자연습 상세결과\n' + '\n' + '소요시간: ' + TIME + '초\n' + '맞은 문자 수: ' +

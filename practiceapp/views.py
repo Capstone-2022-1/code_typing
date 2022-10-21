@@ -1,7 +1,10 @@
 import random
 import json
+from datetime import datetime
 from urllib import parse
 
+import requests
+from django.contrib.auth.models import User
 from django.core import serializers
 from django.http import JsonResponse
 from django.shortcuts import render
@@ -9,7 +12,8 @@ from django.shortcuts import render
 # Create your views here.
 from django.urls import resolve
 
-from practiceapp.models import Language, Practice
+import practiceapp.models
+from practiceapp.models import Language, Practice, Presult
 
 
 def practice_first(request):
@@ -111,11 +115,19 @@ def practice_second(request):
 def result(request):
     print("result 실행")
     user = request.user
+    prac = Practice()
+    pday = datetime.now()
+    pnum = request.GET.get('pnum')
     TIME = request.GET.get('TIME')
     score = request.GET.get('score')
+    speed = (int(score)//int(TIME)) * 60
     miss = request.GET.get('miss')
-    print(TIME,score,miss,user)
-    context = {'TIME': TIME, 'score': score, 'miss':miss, 'user':user}
+    score2 = int(((int(score) // (int(score) + int(miss)) * 100) * 100) // 100.0)
+
+    print(pnum,TIME,score,miss,user,speed)
+
+
+    context = {'TIME': TIME, 'score': score, 'miss':miss, 'user':user, 'pday':pday, 'speed':speed, 'score2':score2}
     return render(request, 'practiceapp/practice_result.html', context)
 
     # time = request.GET.get('TIME')
@@ -126,4 +138,3 @@ def result(request):
     # print(sendData)
     # return JsonResponse(data={})
     # return render(request, 'practiceapp/practice_result.html')
-

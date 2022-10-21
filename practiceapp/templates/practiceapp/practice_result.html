@@ -5,6 +5,20 @@
 .korean{
         font-family: 'Nanum Gothic Coding', monospace;
     }
+.w-btn {
+    position: relative;
+    border: none;
+    display: inline-block;
+    padding: 10px 30px;
+    border-radius: 15px;
+    font-family: "paybooc-Light", sans-serif;
+    text-decoration: none;
+    transition: 0.25s;
+}
+.w-btn-ccc {
+    background-color: #CCCBF2;
+    color: black;
+}
 .div3 {
         text-decoration: none;
         color: black;
@@ -81,17 +95,30 @@
 
             </div>
         </div>
-        <div style="padding:1rem; border: 1px solid #504DD2;border-radius: 2rem; display: inline-block;height: 100%; width: 70%; margin-right:.5%;vertical-align: top">
+        <div style="padding:2.5rem 2rem; border: 1px solid #504DD2;border-radius: 2rem; display: inline-block;height: 100%; width: 70%; margin-right:.5%;vertical-align: top">
             <div style="height: 47%; width: 100%;">
-                <p>사용자명 : {{ user }}</p>
-                <p>시간 : {{ TIME }}</p>
-                <p>스코어 : {{ score }}</p>
-                <p>미스 : {{ miss }}</p>
+                <p>연습 일자: {{ pday }}</p>
+                <p>소요 시간: {{ TIME }}초</p>
+                <p>오타 횟수: {{ miss }}번</p>
+                <p>타자 속도: {{ speed }}</p>
+                <p>정확도: {{ score2 }}</p>
             </div>
             <hr style="background-color: #504DD2; height:.1rem; border:0px">
-            <div style="height: 33%; width: 100%;"></div>
+            <div style="height: 33%; width: 100%;">
+                <p style="text-align: center;"><한 줄 요약></p>
+                <p>
+                    {% if speed >= 400 %}
+                    - 타자속도가 매우 빠릅니다.
+                    {% else %}
+                    - 조금 더 연습하세요.
+                    {% endif %}
+                </p>
+            </div>
             <hr style="background-color: #504DD2; height:.1rem; border:0px">
-            <div style="height: 16%; width: 100%;"></div>
+            <div style="text-align: center;">
+                <input type="submit" class="w-btn w-btn-ccc col-4" value="결과 저장하기">
+                <input type="submit" class="w-btn w-btn-ccc col-4" value="계속하기">
+            </div>
         </div>
 
     </div>
