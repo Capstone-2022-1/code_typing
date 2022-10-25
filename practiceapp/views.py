@@ -14,6 +14,7 @@ from django.urls import resolve
 
 import practiceapp.models
 from practiceapp.models import Language, Practice, Presult
+from profileapp.models import Profile
 
 
 def practice_first(request):
@@ -114,21 +115,27 @@ def practice_second(request):
 
 def result(request):
     print("result 실행")
-    user = request.user
-    prac = Practice()
-    pday = datetime.now()
-    pnum = request.GET.get('pnum')
-    TIME = request.GET.get('TIME')
-    score = request.GET.get('score')
-    speed = (int(score)//int(TIME)) * 60
-    miss = request.GET.get('miss')
-    score2 = int(((int(score) // (int(score) + int(miss)) * 100) * 100) // 100.0)
 
-    print(pnum,TIME,score,miss,user,speed)
+    if request.method == "GET":
+        user = request.user
+        prac = Practice()
+        pday = datetime.now()
+        pnum = request.GET.get('pnum')
+        TIME = request.GET.get('TIME')
+        score = request.GET.get('score')
+        speed = (int(score) // int(TIME)) * 60
+        miss = request.GET.get('miss')
+        score2 = int(((int(score) // (int(score) + int(miss)) * 100) * 100) // 100.0)
+
+        print(pnum,TIME,score,miss,user,speed)
 
 
-    context = {'TIME': TIME, 'score': score, 'miss':miss, 'user':user, 'pday':pday, 'speed':speed, 'score2':score2}
-    return render(request, 'practiceapp/practice_result.html', context)
+
+        context = {'TIME': TIME, 'score': score, 'miss':miss, 'user':user, 'pday':pday,
+                   'speed':speed, 'score2':score2}
+        return render(request, 'practiceapp/practice_result.html', context)
+
+
 
     # time = request.GET.get('TIME')
     # score = request.GET.get('score')
@@ -138,3 +145,14 @@ def result(request):
     # print(sendData)
     # return JsonResponse(data={})
     # return render(request, 'practiceapp/practice_result.html')
+
+def manage_result(request):
+    if request.method == "POST" and 'manageresult' in request.POST:
+        print("POST성공")
+        if request.POST['manageresult'] == '결과 저장하기':
+            print("결과 저장")
+        elif request.POST['manageresult'] == '다시하기':
+            print("다시")
+        else:
+            print("계속")
+    return render(request, 'practiceapp/manage_result.html')
