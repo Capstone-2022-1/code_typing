@@ -125,7 +125,9 @@ def result(request):
         score = request.GET.get('score')
         speed = (int(score) // int(TIME)) * 60
         miss = request.GET.get('miss')
-        score2 = int(((int(score) // (int(score) + int(miss)) * 100) * 100) // 100.0)
+        # score2 = int((int(score) - int(miss) // int(score)) * 100 // 100.0)
+        score2 = int(100 * ((int(score)-int(miss))/int(score)))
+
 
         print(pnum,TIME,score,miss,user,speed)
 

@@ -3,359 +3,365 @@
 
 {% block content %}
 
-<style>
+    <style>
 
-    .korean {
-        font-family: 'Nanum Gothic Coding', monospace;
-    }
+        .korean {
+            font-family: 'Nanum Gothic Coding', monospace;
+        }
 
-    .w-btn {
-        position: relative;
-        border: none;
-        display: inline-block;
-        padding: 8px 30px;
-        border-radius: 15px;
-        font-family: "paybooc-Light", sans-serif;
-        text-decoration: none;
-        transition: 0.25s;
-    }
+        .w-btn {
+            position: relative;
+            border: none;
+            display: inline-block;
+            padding: 8px 30px;
+            border-radius: 15px;
+            font-family: "paybooc-Light", sans-serif;
+            text-decoration: none;
+            transition: 0.25s;
+        }
 
-    .w-btn-ccc {
-        background-color: #CCCBF2;
-        color: black;
-    }
+        .w-btn-ccc {
+            background-color: #CCCBF2;
+            color: black;
+        }
 
-    #text {
-        font-size: 1em;
-        font-weight: bold;
-        color: #666;
-        text-align: center;
-    }
+        #text {
+            font-size: 1em;
+            font-weight: bold;
+            color: #666;
+            text-align: center;
+        }
 
-    span {
-        transition: all 300ms 0s ease;
-    }
+        span {
+            transition: all 300ms 0s ease;
+        }
 
-    .add-green {
+        .add-green {
 
-        color: black;
-        font-weight: 900;
-    }
+            color: black;
+            font-weight: 900;
+        }
 
-    .add-red {
-        color: red;
-        font-weight: 900;
-    }
+        .add-red {
+            color: red;
+            font-weight: 900;
+        }
 
-    h1 {
-        padding-left: 30%;
-    }
+        .add-gray {
+            color: gray;
+            font-weight: 900;
+        }
 
-    #risutart {
-        bottom: 700px;
-        position: absolute;
-        font-weight: 200;
-    }
+        h1 {
+            padding-left: 30%;
+        }
 
-</style>
+        #risutart {
+            bottom: 700px;
+            position: absolute;
+            font-weight: 200;
+        }
+
+    </style>
 
 
-<div style="height: 40rem; width: 100%; display: flex; justify-content: center; margin-top: 5rem">
-    <div style="height: 100%; width: 90%;">
-        <div style="height: 8%; width: 100%;">
-            <div style="display:inline-block; height: 100%; width: auto; padding-top: .5rem;
+    <div style="height: 40rem; width: 100%; display: flex; justify-content: center; margin-top: 5rem">
+        <div style="height: 100%; width: 90%;">
+            <div style="height: 8%; width: 100%;">
+                <div style="display:inline-block; height: 100%; width: auto; padding-top: .5rem;
             padding-left: .5rem; font-size: 20px; margin-bottom: 0;" class="korean">
-                {% for l in l %}
-                언어: {{ l.language }}
-                {% endfor %}
+                    {% for l in l %}
+                        언어: {{ l.language }}
+                    {% endfor %}
 
-            </div>
-        </div>
-        {% for p in practice_select %}
-        <div style="height:82%; width: 100%;">
-            <div style="text-align:right;height: 6%; width: 100%; font-size: 18px;" class="korean">
-                <a data-bs-toggle="collapse" href="#collapseExample" role="button"
-                   aria-expanded="false" aria-controls="collapseExample"
-                   style="text-decoration: none;color:#504DD2">?</a>
-                <div class="collapse" id="collapseExample">
-                    <div class="card card-body">
-                        <pre>{{ p.code_result }}</pre>
-                    </div>
                 </div>
             </div>
-            <div id="test" style="color: white; font-size: xx-small">{{ p.code_content }}</div>
-            <div style="height: 26rem; width: 100%; border: 1px solid #504DD2; overflow-y: scroll;padding: 3px">
+            {% for p in practice_select %}
+                <div style="height:82%; width: 100%;">
+                    <div style="text-align:right;height: 6%; width: 100%; font-size: 18px;" class="korean">
+                        <a data-bs-toggle="collapse" href="#collapseExample" role="button"
+                           aria-expanded="false" aria-controls="collapseExample"
+                           style="text-decoration: none;color:#504DD2">?</a>
+                        <div class="collapse" id="collapseExample">
+                            <div class="card card-body">
+                                <pre>{{ p.code_result }}</pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="test" style="color: white; font-size: xx-small">{{ p.code_content }}</div>
+                    <div style="height: 26rem; width: 100%; border: 1px solid #504DD2; overflow-y: scroll;padding: 3px">
                         <pre id="text" style="font-size: 20px; text-align: left; white-space: pre-wrap;"
                              class="korean"></pre>
-            </div>
+                    </div>
 
-            <div style="width: 100%; border: 1px solid #504DD2;">
-                <div style="font-size: 20px;" class="korean">
+                    <div style="width: 100%; border: 1px solid #504DD2;">
+                        <div style="font-size: 20px;" class="korean">
                      <span style="margin-left: 1rem" class="info">
                         <span> Letter score: </span> <span id="score">0</span>
                      </span>
-                    <span style="text-align: center; float: right; margin-right: 1rem">
+                            <span style="text-align: center; float: right; margin-right: 1rem">
                          <span> Miss score: </span> <span id="miss">0</span>
                     </span>
-                    <span style="text-align: center; margin-left: 27rem">
+                            <span style="text-align: center; margin-left: 27rem">
                         <span style="margin-left: 4%" id="timer"></span>
                         <span id="seikai"></span>
                     </span>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div style="height: 10%; width: 100%;">
-            <div style="display: inline-block; height: 100%; width: 49.5%;vertical-align: top" class="korean">
-                출처 : {{ p.code_source }}
-                <span style="color: white" id="pnum">{{ p.practice_id }}</span>
-            </div>
+                <div style="height: 10%; width: 100%;">
+                    <div style="display: inline-block; height: 100%; width: 49.5%;vertical-align: top" class="korean">
+                        출처 : {{ p.code_source }}
+                        <span style="color: white" id="pnum">{{ p.practice_id }}</span>
+                    </div>
 
-        </div>
+                </div>
+                </div>
+            {% endfor %}
     </div>
-    {% endfor %}
-</div>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-<!--<script src="sweetalert2/dist/sweetalert2.min.js"></script>-->
-<!--<link rel="stylesheet" href="sweetalert2.min.css">-->
-<!--<link rel="stylesheet" href="@sweetalert2/theme-borderless/borderless.css">-->
-<script>
-  $.ajaxSetup({
-    headers: { "X-CSRFToken": '{{csrf_token}}' }
-  });
-</script>
-<script type="text/javascript">
-    let timer = document.getElementById('timer');
-    var TIME = 0;
-    const seikai = document.getElementById('seikai');
-    // const practice_num = document.getElementById('practice_num');
-
-    const title = '타자연습을 시작하겠습니까?'
-    const text = '확인버튼을 누르면 바로 시작됩니다!'
-    const title2 = '상세결과를 보시겠습니까?'
-    const text2 = '상세결과를 통해 자세한 정보를 볼 수 있습니다.'
-
-
-    Swal.fire({
-        title: title,
-        text: text,
-        icon: 'question',
-        showCancelButton: true,
-        confirmButtonColor: '#504DD2',
-        cancelButtonColor: '#14128F',
-        confirmButtonText: '확인',
-        cancelButtonText: '취소',
-    }).then((result) => {
-        if (!result.isConfirmed) {
-
-            cancel();
-        } else {
-            const countdown = setInterval(function () {
-                timer.textContent = '소요시간：' + ++TIME + '초'
-                if (TIME > 300) finish();
-                if (!state) return;
-            }, 1000);
-
-            function finish() {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    confirmButtonColor: '#504DD2',
-                    confirmButtonText: '확인',
-                    text: Math.round(TIME / 60) + '분 경과\n시간초과',
-                })
-                clearInterval(countdown);
-                seikai.textContent = '점수' + score + '점';
-                state = false;
-            }
-        }
-    })
-
-
-    var p = document.getElementById('text');
-    const s = document.getElementById('test').innerHTML;
-    var textLists = s;
-    var len_textLists = s.length;
-    // {##}
-    var checkTexts = [];
-    const pnum = document.getElementById('pnum').innerHTML;
-
-    function cancel() {
-        location.href = "{% url 'practiceapp:firstpractice' %}"
-    }
-
-    function moveresult(pnum,TIME,score,miss) {
-         location.href="{% url 'practiceapp:result' %}" + "?pnum=" + pnum + "&TIME=" + TIME + "&score=" + score + "&miss=" + miss
-        // jQuery.ajax({
-        //     url: "result",
-        //     type: "GET",
-        //     data: sendData,
-        //     dataType: "json",
-        //     success: function (){
-        //         location.href = "/practice/second/result?"+"TIME="+TIME+"&score="+score+"&miss="+miss
-        //     },
-        //     error: function (){
-        //     }
-        // });
-        // data = {'TIME':TIME, 'score':score, 'miss':miss}
-        // location.href = "{% url 'practiceapp:result' %}"
-    }
-
-
-    function resultcancel() {
-        location.href = "{% url 'practiceapp:second' %}"
-    }
-
-    function home() {
-        location.href = "{% url 'mainapp:mainpage' %}"
-    }
-
-
-    createText();
-
-
-    function createText() {
-
-        p.textContent = '';
-
-        checkTexts = textLists.split('').map(function (value) {
-
-            const spanchar = document.createElement('spanchar');
-            spanchar.textContent = value;
-            p.appendChild(spanchar);
-
-            return spanchar;
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <!--<script src="sweetalert2/dist/sweetalert2.min.js"></script>-->
+    <!--<link rel="stylesheet" href="sweetalert2.min.css">-->
+    <!--<link rel="stylesheet" href="@sweetalert2/theme-borderless/borderless.css">-->
+    <script>
+        $.ajaxSetup({
+            headers: {"X-CSRFToken": '{{csrf_token}}'}
         });
+    </script>
+    <script type="text/javascript">
+        let timer = document.getElementById('timer');
+        var TIME = 0;
+        const seikai = document.getElementById('seikai');
+        // const practice_num = document.getElementById('practice_num');
 
-    }
-
-    const scoreLabel = document.getElementById("score");
-    const missLabel = document.getElementById("miss");
-
-    let score = 0;
-    let miss = 0;
-
-    let state = true;
-
-    window.addEventListener('keydown', e => {
-        state = true;
-
-        if (e.key === checkTexts[0].textContent) {
-            if (!state) return;
-            console.log("score");
-            checkTexts[0].className = 'add-green';
-
-            score++;
-            scoreLabel.textContent = score;
-            checkTexts.shift();
-        } else if (e.keyCode === 13) {
-            checkTexts[0].className = 'add-next';
-            score=score+2;
-            checkTexts.shift();
-        } else if (e.keyCode == "9") {
-            e.preventDefault()
-            // {#다른 선택지로 가는 것을 막는것#}
-            alert('tab');
+        const title = '타자연습을 시작하겠습니까?'
+        const text = '확인버튼을 누르면 바로 시작됩니다!'
+        const title2 = '상세결과를 보시겠습니까?'
+        const text2 = '상세결과를 통해 자세한 정보를 볼 수 있습니다.'
 
 
-        } else {
-            if (!state) return;
-            checkTexts[0].className = 'add-red';
-            var bool = event.shiftKey;
-            if (bool == true) {
+        Swal.fire({
+            title: title,
+            text: text,
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#504DD2',
+            cancelButtonColor: '#14128F',
+            confirmButtonText: '확인',
+            cancelButtonText: '취소',
+        }).then((result) => {
 
-            } else if (bool == false) {
-                miss++;
-                missLabel.textContent = miss;
+            if (!result.isConfirmed) {
+                cancel();
+            } else {
+                const countdown = setInterval(function () {
+                    timer.textContent = '소요시간：' + ++TIME + '초'
+                    if (TIME > 300) finish();
+                    if (!state) return;
+                }, 1000);
+
+                function finish() {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        confirmButtonColor: '#504DD2',
+                        confirmButtonText: '확인',
+                        text: Math.round(TIME / 60) + '분 경과\n시간초과',
+                    })
+                    clearInterval(countdown);
+                    seikai.textContent = '점수' + score + '점';
+                    state = false;
+                }
             }
+        })
+
+
+        var p = document.getElementById('text');
+        const s = document.getElementById('test').innerHTML;
+        var textLists = s;
+        var len_textLists = s.length;
+        // {##}
+        var checkTexts = [];
+        const pnum = document.getElementById('pnum').innerHTML;
+
+        function cancel() {
+            location.href = "{% url 'practiceapp:firstpractice' %}"
         }
 
-        if (checkTexts.length == 0) {
-            clearInterval();
-            Swal.fire({
-                title: title2,
-                text: text2,
-                icon: 'question',
-                iconColor: '#504DD2',
-                showCancelButton: true,
-                confirmButtonColor: '#504DD2',
-                cancelButtonColor: '#14128F',
-                confirmButtonText: '확인',
-                cancelButtonText: '취소'
-            }).then((result) => {
-                if (!result.isConfirmed) {
-                    Swal.fire({
-                        title: '타자연습 다시 하시겠습니까?',
-                        showDenyButton: true,
-                        showCancelButton: true,
-                        confirmButtonText: '네',
-                        denyButtonText: `아니오`,
-                        cancelButtonText: '아니오',
-                        confirmButtonColor: '#504DD2',
-                        cancelButtonColor: '#14128F',
-                    }).then((result) => {
-                        /* Read more about isConfirmed, isDenied below */
-                        if (result.isConfirmed) {
-                            cancel();
-                        } else {
-                            home();
-                        }
-                    })
-                } else {
-                    // var jsonData = new Object();
-                    // jsonData.TIME = TIME;
-                    // jsonData.score = score;
-                    // jsonData.miss = miss;
-                    //
-                    // // 위에서 만든 json format을 문자열화
-                    // var sendData = jsonData;
-                    // // var sendData = JSON.stringify(jsonData);
-                    // moveresult(sendData)
+        function moveresult(pnum, TIME, score, miss) {
+            location.href = "{% url 'practiceapp:result' %}" + "?pnum=" + pnum + "&TIME=" + TIME + "&score=" + score + "&miss=" + miss
+            // jQuery.ajax({
+            //     url: "result",
+            //     type: "GET",
+            //     data: sendData,
+            //     dataType: "json",
+            //     success: function (){
+            //         location.href = "/practice/second/result?"+"TIME="+TIME+"&score="+score+"&miss="+miss
+            //     },
+            //     error: function (){
+            //     }
+            // });
+            // data = {'TIME':TIME, 'score':score, 'miss':miss}
+            // location.href = "{% url 'practiceapp:result' %}"
+        }
 
 
-                    moveresult(pnum,TIME,score,miss)
+        function resultcancel() {
+            location.href = "{% url 'practiceapp:second' %}"
+        }
 
-                        // Swal.fire({
-                        //     title: '타자연습 상세결과\n' + '\n' + '소요시간: ' + TIME + '초\n' + '맞은 문자 수: ' +
-                        //         score + '개\n' + '틀린 문자 수: ' + miss + '개\n' + '타자속도: ' + Math.round(((score / TIME) * 60)) +
-                        //         '\n정확도: ' + Math.round((((score / (score + miss)) * 100) * 100) / 100.0) + '%',
-                        //     confirmButtonColor: '#504DD2',
-                        //     showClass: {
-                        //         popup: 'animate__animated animate__fadeInDown'
-                        //     },
-                        //     hideClass: {
-                        //         popup: 'animate__animated animate__fadeOutUp'
-                        //     }
-                        // })
-                        .then((result) => {
+        function home() {
+            location.href = "{% url 'mainapp:mainpage' %}"
+        }
+
+
+        createText();
+
+
+        function createText() {
+
+            p.textContent = '';
+
+            checkTexts = textLists.split('').map(function (value) {
+
+                const spanchar = document.createElement('spanchar');
+                spanchar.textContent = value;
+                p.appendChild(spanchar);
+
+                return spanchar;
+            });
+
+        }
+
+        const scoreLabel = document.getElementById("score");
+        const missLabel = document.getElementById("miss");
+
+        let score = 0;
+        let miss = 0;
+
+        let state = true;
+
+        window.addEventListener('keydown', e => {
+            state = true;
+
+
+            if (e.key === checkTexts[0].textContent) {
+                if (!state) return;
+                console.log("score");
+                checkTexts[0].className = 'add-green';
+
+                score++;
+                scoreLabel.textContent = score;
+                checkTexts.shift();
+            } else if (e.keyCode == 9) {
+                e.preventDefault()
+                // {#다른 선택지로 가는 것을 막는것#}
+                checkTexts[0].className = 'add-tab';
+                score = score + 1;
+                checkTexts.shift();
+            } else if (e.keyCode === 13) {
+                checkTexts[0].className = 'add-next';
+                score = score + 2;
+                checkTexts.shift();
+            } else if (e.keyCode == 8) {
+                checkTexts[0].className = 'add-gray';
+            } else {
+                if (!state) return;
+                checkTexts[0].className = 'add-red';
+                var bool = event.shiftKey;
+                if (bool == true) {
+                } else if (bool == false) {
+                    miss++;
+                    missLabel.textContent = miss;
+                }
+            }
+            if (checkTexts.length == 0) {
+                clearInterval();
+                Swal.fire({
+                    title: title2,
+                    text: text2,
+                    icon: 'question',
+                    iconColor: '#504DD2',
+                    showCancelButton: true,
+                    confirmButtonColor: '#504DD2',
+                    cancelButtonColor: '#14128F',
+                    confirmButtonText: '확인',
+                    cancelButtonText: '취소'
+                }).then((result) => {
+                    if (!result.isConfirmed) {
+                        Swal.fire({
+                            title: '타자연습 다시 하시겠습니까?',
+                            showDenyButton: true,
+                            showCancelButton: true,
+                            confirmButtonText: '네',
+                            denyButtonText: `아니오`,
+                            cancelButtonText: '아니오',
+                            confirmButtonColor: '#504DD2',
+                            cancelButtonColor: '#14128F',
+                        }).then((result) => {
+                            /* Read more about isConfirmed, isDenied below */
                             if (result.isConfirmed) {
-                                Swal.fire({
-                                    title: '타자연습 다시 하시겠습니까?',
-                                    showDenyButton: true,
-                                    showCancelButton: true,
-                                    confirmButtonText: '네',
-                                    denyButtonText: `아니오`,
-                                    cancelButtonText: '아니오',
-                                    confirmButtonColor: '#504DD2',
-                                    cancelButtonColor: '#14128F',
-                                }).then((result) => {
-                                    /* Read more about isConfirmed, isDenied below */
-                                    if (result.isConfirmed) {
-                                        cancel();
-                                    } else {
-                                        home();
-                                    }
-                                })
+                                cancel();
+                            } else {
+                                home();
                             }
                         })
-                }
-            })
+                    } else {
+                        // var jsonData = new Object();
+                        // jsonData.TIME = TIME;
+                        // jsonData.score = score;
+                        // jsonData.miss = miss;
+                        //
+                        // // 위에서 만든 json format을 문자열화
+                        // var sendData = jsonData;
+                        // // var sendData = JSON.stringify(jsonData);
+                        // moveresult(sendData)
 
 
-            state = false;
-        }
+                        moveresult(pnum, TIME, score, miss)
 
-    });
+                            // Swal.fire({
+                            //     title: '타자연습 상세결과\n' + '\n' + '소요시간: ' + TIME + '초\n' + '맞은 문자 수: ' +
+                            //         score + '개\n' + '틀린 문자 수: ' + miss + '개\n' + '타자속도: ' + Math.round(((score / TIME) * 60)) +
+                            //         '\n정확도: ' + Math.round((((score / (score + miss)) * 100) * 100) / 100.0) + '%',
+                            //     confirmButtonColor: '#504DD2',
+                            //     showClass: {
+                            //         popup: 'animate__animated animate__fadeInDown'
+                            //     },
+                            //     hideClass: {
+                            //         popup: 'animate__animated animate__fadeOutUp'
+                            //     }
+                            // })
+                            .then((result) => {
+                                if (result.isConfirmed) {
+                                    Swal.fire({
+                                        title: '타자연습 다시 하시겠습니까?',
+                                        showDenyButton: true,
+                                        showCancelButton: true,
+                                        confirmButtonText: '네',
+                                        denyButtonText: `아니오`,
+                                        cancelButtonText: '아니오',
+                                        confirmButtonColor: '#504DD2',
+                                        cancelButtonColor: '#14128F',
+                                    }).then((result) => {
+                                        /* Read more about isConfirmed, isDenied below */
+                                        if (result.isConfirmed) {
+                                            cancel();
+                                        } else {
+                                            home();
+                                        }
+                                    })
+                                }
+                            })
+                    }
+                })
 
-</script>
+
+                state = false;
+            }
+
+        });
+
+    </script>
 {% endblock %}
